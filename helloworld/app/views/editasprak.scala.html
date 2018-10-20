@@ -1,0 +1,28 @@
+@(id:Long, filledAsprakForm: Form[Asprak])
+
+@import helper._
+
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.css")">
+
+
+
+@helper.form(CSRF(routes.HomeController.updateAsprak(id)), 
+    args = 'class -> "text-left col-sm-4", 'style -> "margin-left:10%;"){
+    <div class="form-group">
+        @helper.inputText(filledAsprakForm("Nim_asprak"), 
+                            '_label -> "Nim", 
+                            'name->"nim", 
+                            'size -> 30,
+                            'class -> "form-control")
+    </div>
+    <div class="form-group">
+        @helper.inputText(filledAsprakForm("Nama"),
+                            '_label -> "Nama", 
+                            'name->"nama", 
+                            'size -> 30,
+                            'class -> "form-control")
+    </div>
+    <button type="submit" class="btn btn-primary">Update Asprak</button>
+
+
+}

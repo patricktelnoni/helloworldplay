@@ -1,0 +1,19 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.FreeController.index
+GET     /home                       controllers.FreeController.dashboard
+POST    /hapus_asprak/:id/delete    controllers.HomeController.hapusAsprak(id: Long)
+GET     /list_asprak                controllers.HomeController.daftarAsprak
+GET     /form_asprak                controllers.HomeController.formAsprak
+POST    /tambah_asprak              controllers.HomeController.tambahAsprak
+GET     /edit_asprak/:id/edit       controllers.HomeController.editAsprak(id: Long)
+POST    /update_asprak/:id/update   controllers.HomeController.updateAsprak(id: Long)
+POST    /do_login                   controllers.FreeController.doLogin
+GET    /cek_login                   controllers.FreeController.cekLogin
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+

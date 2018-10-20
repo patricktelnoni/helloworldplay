@@ -1,0 +1,42 @@
+@(listAsprak: List[Asprak], asprakForm: Form[Asprak])
+
+@import helper._
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("javascripts/jquery.js")">
+
+@main("Daftar Asprak") {
+    
+    <h1>@listAsprak.size() Asprak</h1>
+    <table class="table table-striped table-bordered table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">Nim</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Role</th>
+            <th scope="col">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+       
+        @for(asprak <- listAsprak) {
+            <tr>
+                <td scope="row">@asprak.nim_asprak</td>
+                <td>@asprak.nama</td>
+                <td>@asprak.role</td>
+                <td><button type="submit" class="btn btn-warning"><a href="@routes.HomeController.editAsprak(asprak.nim_asprak)">Edit</a></button>
+                    |@form(CSRF(routes.HomeController.hapusAsprak(asprak.nim_asprak))) {
+                    <input type="submit" value="Delete">
+                }</td>
+                
+                
+            </tr>
+        }
+        </tbody>
+    </table>
+
+
+    <a href="@routes.HomeController.formAsprak">Tambah Asprak</a>
+    
+    
+}

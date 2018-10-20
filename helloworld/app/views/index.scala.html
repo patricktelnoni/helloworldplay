@@ -1,0 +1,17 @@
+@(loginForm: Form[forms.LoginForm])
+@{
+    if(session.get("akses") == "dosen")
+        dosen.menu.render()
+    else if(session.get("akses") == "laboran")
+        laboran.menu.render()
+    else if(session.get("akses") == "praktikan")
+        praktikan.menu.render()
+    else if(session.get("akses") == "asprak")
+        asprak.menu.render()
+    else
+        user.render(loginForm)
+
+}
+
+
+

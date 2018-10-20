@@ -1,0 +1,9 @@
+@(loginForm: Form[forms.LoginForm])
+@import helper._
+@helper.form(CSRF(routes.FreeController.doLogin())){
+    @helper.inputText(loginForm("nim"), 'id -> "nim", 'size -> 30)
+    @helper.inputPassword(loginForm("password"))
+    <input type="submit" value="Login" />
+}
+
+

@@ -1,0 +1,13 @@
+@if(flash.containsKey("email")) {
+    @flash.get("email")
+} else {
+    redirect(routes.FreeController.index())
+}
+<html>
+<head>
+    <title>Access failed</title>
+</head>
+<body>
+<h3>Access failed</h3>
+</body>
+</html>

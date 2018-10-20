@@ -1,0 +1,22 @@
+@(subject: be.objectify.deadbolt.java.models.Subject)
+
+
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.css")">
+<script src="@routes.Assets.versioned("javascripts/jquery.js")"></script>
+<script>
+        console.log("The fuck is gong on dude?");
+        $(document).ready(function(){
+            setTimeout(function() {
+                window.location.href = "@routes.FreeController.index()"
+            }, 5000);
+        });
+
+</script>
+<div class="row-fluid" id="config">
+  <div class="span10">
+      <h1>You're not authorized so goddamn stalker..!!!</h1>
+
+     
+  </div>
+</div>
+
