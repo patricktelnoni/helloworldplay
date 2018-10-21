@@ -19,6 +19,9 @@ public class Praktikan extends Model {
   
     @ManyToOne
     Kelas kelas;
+
+    @OneToOne
+    AuthorisedUser authorisedUser;
     
     public static final Finder<Long, Praktikan> find = new Finder<>(Praktikan.class);
 }

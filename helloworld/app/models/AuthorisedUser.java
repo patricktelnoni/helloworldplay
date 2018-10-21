@@ -20,6 +20,8 @@ public class AuthorisedUser extends Model implements Subject
 
     public String userName;
 
+    public String password;
+
     @ManyToMany
     public List<SecurityRole> roles;
 

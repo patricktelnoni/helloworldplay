@@ -20,6 +20,10 @@ public class Asprak extends Model {
 
     public boolean active;
 
+    @OneToOne
+    @JoinColumn(name="user_id")
+    AuthorisedUser authorisedUser;
+
     @Formats.DateTime(pattern="dd/MM/yyyy")
     public Date dueDate = new Date();
 
