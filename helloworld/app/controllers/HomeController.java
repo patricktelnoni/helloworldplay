@@ -1,5 +1,7 @@
 package controllers;
 
+import be.objectify.deadbolt.java.actions.Group;
+import be.objectify.deadbolt.java.actions.Restrict;
 import models.*;
 import forms.*;
 import play.libs.Json;
@@ -17,6 +19,7 @@ import views.html.index;
 
 
 @With(Base.class)
+@Restrict({@Group("Laboran")})
 public class HomeController extends Controller{ 
     @Inject FormFactory formFactory;    
     
@@ -39,24 +42,22 @@ public class HomeController extends Controller{
     }
 
     public Result daftarAsprak(){
-        // Form<LoginForm> loginForm = formFactory.form(LoginForm.class);
-        // Form<Asprak> asprakForm = formFactory.form(Asprak.class);
-        // return ok(
-        //     views.html.listasprak.render(Asprak.all(), asprakForm)
-        // );
-        Object user = ctx().args.get("user");
-        Logger.info("Calling action for {}", user);
-        return ok(Json.toJson(user));  
+         Form<LoginForm> loginForm = formFactory.form(LoginForm.class);
+         Form<Asprak> asprakForm = formFactory.form(Asprak.class);
+         return ok(
+             views.html.listasprak.render(Asprak.all(), asprakForm)
+         );
+//        String user = session("email");
+//        Logger.info("Calling action for {}", user);
+//        return ok(Json.toJson(user));
         
     }
 
     public Result formAsprak(){   
            
-        // Form<Asprak> asprakForm = formFactory.form(Asprak.class);
-        // return ok(views.html.tambahasprak.render(asprakForm));
-        Object user = ctx().args.get("user");
-        Logger.info("Calling action for {}", user);
-        return ok(Json.toJson(user));  
+        Form<Asprak> asprakForm = formFactory.form(Asprak.class);
+        return ok(views.html.tambahasprak.render(asprakForm));
+
     }
 
     public Result tambahAsprak(){

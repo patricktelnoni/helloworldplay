@@ -24,9 +24,6 @@ import io.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
 
-/**
- * @author Steve Chaloner (steve@objectify.be)
- */
 @Entity
 public class SecurityRole extends Model implements Role
 {

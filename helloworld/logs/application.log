@@ -1,170 +1,112 @@
-2018-10-21 15:44:28,898 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-2 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 7: user is deprecated, use username instead
-2018-10-21 15:44:28,903 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-2 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
-2018-10-21 15:44:28,924 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-2 - Creating Pool for datasource 'default'
-2018-10-21 15:44:30,846 [ERROR] from application in play-dev-mode-akka.actor.default-dispatcher-2 - 
-
-! @79jdpp83i - Internal server error, for (GET) [/list_asprak] ->
- 
-play.api.db.evolutions.InvalidDatabaseRevision: Database 'default' needs evolution![An SQL script need to be run on your database.]
-	at play.api.db.evolutions.ApplicationEvolutions.$anonfun$runEvolutions$1(ApplicationEvolutions.scala:78)
-	at play.api.db.evolutions.ApplicationEvolutions.withLock(ApplicationEvolutions.scala:100)
-	at play.api.db.evolutions.ApplicationEvolutions.runEvolutions(ApplicationEvolutions.scala:49)
-	at play.api.db.evolutions.ApplicationEvolutions.$anonfun$start$1(ApplicationEvolutions.scala:42)
-	at play.api.db.evolutions.ApplicationEvolutions.$anonfun$start$1$adapted(ApplicationEvolutions.scala:42)
-	at scala.collection.immutable.List.foreach(List.scala:389)
-	at play.api.db.evolutions.ApplicationEvolutions.start(ApplicationEvolutions.scala:42)
-	at play.api.db.evolutions.ApplicationEvolutions.<init>(ApplicationEvolutions.scala:151)
-	at play.api.db.evolutions.ApplicationEvolutionsProvider.get$lzycompute(EvolutionsModule.scala:50)
-	at play.api.db.evolutions.ApplicationEvolutionsProvider.get(EvolutionsModule.scala:49)
-	at play.api.db.evolutions.ApplicationEvolutionsProvider.get(EvolutionsModule.scala:40)
-	at com.google.inject.internal.ProviderInternalFactory.provision(ProviderInternalFactory.java:81)
-	at com.google.inject.internal.BoundProviderFactory.provision(BoundProviderFactory.java:72)
-	at com.google.inject.internal.ProviderInternalFactory.circularGet(ProviderInternalFactory.java:61)
-	at com.google.inject.internal.BoundProviderFactory.get(BoundProviderFactory.java:62)
-	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
-	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
-	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
-	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
-	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
-	at com.google.inject.internal.InternalInjectorCreator$1.call(InternalInjectorCreator.java:205)
-	at com.google.inject.internal.InternalInjectorCreator$1.call(InternalInjectorCreator.java:199)
-	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
-	at com.google.inject.internal.InternalInjectorCreator.loadEagerSingletons(InternalInjectorCreator.java:199)
-	at com.google.inject.internal.InternalInjectorCreator.injectDynamically(InternalInjectorCreator.java:180)
-	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:110)
-	at com.google.inject.Guice.createInjector(Guice.java:99)
-	at com.google.inject.Guice.createInjector(Guice.java:84)
-	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:185)
-	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:137)
-	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
-	at play.core.server.DevServerStart$$anon$1.$anonfun$reload$3(DevServerStart.scala:174)
-	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
-	at play.core.server.DevServerStart$$anon$1.reload(DevServerStart.scala:171)
-	at play.core.server.DevServerStart$$anon$1.get(DevServerStart.scala:124)
-	at play.core.server.AkkaHttpServer.handleRequest(AkkaHttpServer.scala:222)
-	at play.core.server.AkkaHttpServer.$anonfun$createServerBinding$1(AkkaHttpServer.scala:138)
-	at akka.stream.impl.fusing.MapAsync$$anon$25.onPush(Ops.scala:1194)
-	at akka.stream.impl.fusing.GraphInterpreter.processPush(GraphInterpreter.scala:519)
-	at akka.stream.impl.fusing.GraphInterpreter.processEvent(GraphInterpreter.scala:482)
-	at akka.stream.impl.fusing.GraphInterpreter.execute(GraphInterpreter.scala:378)
-	at akka.stream.impl.fusing.GraphInterpreterShell.runBatch(ActorGraphInterpreter.scala:585)
-	at akka.stream.impl.fusing.GraphInterpreterShell$AsyncInput.execute(ActorGraphInterpreter.scala:469)
-	at akka.stream.impl.fusing.GraphInterpreterShell.processEvent(ActorGraphInterpreter.scala:560)
-	at akka.stream.impl.fusing.ActorGraphInterpreter.akka$stream$impl$fusing$ActorGraphInterpreter$$processEvent(ActorGraphInterpreter.scala:742)
-	at akka.stream.impl.fusing.ActorGraphInterpreter$$anonfun$receive$1.applyOrElse(ActorGraphInterpreter.scala:757)
-	at akka.actor.Actor.aroundReceive(Actor.scala:517)
-	at akka.actor.Actor.aroundReceive$(Actor.scala:515)
-	at akka.stream.impl.fusing.ActorGraphInterpreter.aroundReceive(ActorGraphInterpreter.scala:667)
-	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:590)
-	at akka.actor.ActorCell.invoke(ActorCell.scala:559)
-	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:257)
-	at akka.dispatch.Mailbox.run(Mailbox.scala:224)
-	at akka.dispatch.Mailbox.exec(Mailbox.scala:234)
-	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
-	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
-	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
-	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
-2018-10-21 15:44:40,019 [INFO] from application in application-akka.actor.default-dispatcher-6 - Shutting down connection pool.
-2018-10-21 15:44:40,264 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-6 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 7: user is deprecated, use username instead
-2018-10-21 15:44:40,264 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-6 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
-2018-10-21 15:44:40,264 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-6 - Creating Pool for datasource 'default'
-2018-10-21 15:44:44,083 [INFO] from application in application-akka.actor.default-dispatcher-5 - Shutting down connection pool.
-2018-10-21 15:44:44,461 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-2 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 7: user is deprecated, use username instead
-2018-10-21 15:44:44,461 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-2 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
-2018-10-21 15:44:44,466 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-2 - Creating Pool for datasource 'default'
-2018-10-21 15:44:44,810 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-2 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 15: play.crypto.secret is deprecated, use play.http.secret.key instead
-2018-10-21 15:44:45,001 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-2 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-10-21 15:44:45,132 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-2 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+2018-10-23 13:36:19,898 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-6 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
+2018-10-23 13:36:19,906 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-6 - Creating Pool for datasource 'default'
+2018-10-23 13:36:21,834 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-6 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
+2018-10-23 13:36:21,838 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-6 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script from play_evolutions order by id;
+2018-10-23 13:36:21,918 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-6 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 17: play.crypto.secret is deprecated, use play.http.secret.key instead
+2018-10-23 13:36:22,321 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-6 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
     play.filters.csrf.CSRFFilter
     play.filters.headers.SecurityHeadersFilter
     play.filters.hosts.AllowedHostsFilter
     play.filters.csrf.CSRFFilter
 
-2018-10-21 15:44:45,136 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-2 - Application started (Dev)
-2018-10-21 15:44:45,388 [INFO] from application in application-akka.actor.default-dispatcher-5 - Calling action for Context attached to (GET /list_asprak)
-2018-10-21 16:43:59,678 [INFO] from application in application-akka.actor.default-dispatcher-10 - Shutting down connection pool.
-2018-10-21 16:43:59,966 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-29 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 7: user is deprecated, use username instead
-2018-10-21 16:43:59,966 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-29 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
-2018-10-21 16:43:59,966 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-29 - Creating Pool for datasource 'default'
-2018-10-21 16:44:00,153 [ERROR] from application in play-dev-mode-akka.actor.default-dispatcher-29 - 
-
-! @79je7kad6 - Internal server error, for (GET) [/] ->
- 
-play.api.db.evolutions.InvalidDatabaseRevision: Database 'default' needs evolution![An SQL script need to be run on your database.]
-	at play.api.db.evolutions.ApplicationEvolutions.$anonfun$runEvolutions$1(ApplicationEvolutions.scala:78)
-	at play.api.db.evolutions.ApplicationEvolutions.withLock(ApplicationEvolutions.scala:100)
-	at play.api.db.evolutions.ApplicationEvolutions.runEvolutions(ApplicationEvolutions.scala:49)
-	at play.api.db.evolutions.ApplicationEvolutions.$anonfun$start$1(ApplicationEvolutions.scala:42)
-	at play.api.db.evolutions.ApplicationEvolutions.$anonfun$start$1$adapted(ApplicationEvolutions.scala:42)
-	at scala.collection.immutable.List.foreach(List.scala:389)
-	at play.api.db.evolutions.ApplicationEvolutions.start(ApplicationEvolutions.scala:42)
-	at play.api.db.evolutions.ApplicationEvolutions.<init>(ApplicationEvolutions.scala:151)
-	at play.api.db.evolutions.ApplicationEvolutionsProvider.get$lzycompute(EvolutionsModule.scala:50)
-	at play.api.db.evolutions.ApplicationEvolutionsProvider.get(EvolutionsModule.scala:49)
-	at play.api.db.evolutions.ApplicationEvolutionsProvider.get(EvolutionsModule.scala:40)
-	at com.google.inject.internal.ProviderInternalFactory.provision(ProviderInternalFactory.java:81)
-	at com.google.inject.internal.BoundProviderFactory.provision(BoundProviderFactory.java:72)
-	at com.google.inject.internal.ProviderInternalFactory.circularGet(ProviderInternalFactory.java:61)
-	at com.google.inject.internal.BoundProviderFactory.get(BoundProviderFactory.java:62)
-	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
-	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
-	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
-	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
-	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
-	at com.google.inject.internal.InternalInjectorCreator$1.call(InternalInjectorCreator.java:205)
-	at com.google.inject.internal.InternalInjectorCreator$1.call(InternalInjectorCreator.java:199)
-	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
-	at com.google.inject.internal.InternalInjectorCreator.loadEagerSingletons(InternalInjectorCreator.java:199)
-	at com.google.inject.internal.InternalInjectorCreator.injectDynamically(InternalInjectorCreator.java:180)
-	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:110)
-	at com.google.inject.Guice.createInjector(Guice.java:99)
-	at com.google.inject.Guice.createInjector(Guice.java:84)
-	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:185)
-	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:137)
-	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
-	at play.core.server.DevServerStart$$anon$1.$anonfun$reload$3(DevServerStart.scala:174)
-	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
-	at play.core.server.DevServerStart$$anon$1.reload(DevServerStart.scala:171)
-	at play.core.server.DevServerStart$$anon$1.get(DevServerStart.scala:124)
-	at play.core.server.AkkaHttpServer.handleRequest(AkkaHttpServer.scala:222)
-	at play.core.server.AkkaHttpServer.$anonfun$createServerBinding$1(AkkaHttpServer.scala:138)
-	at akka.stream.impl.fusing.MapAsync$$anon$25.onPush(Ops.scala:1194)
-	at akka.stream.impl.fusing.GraphInterpreter.processPush(GraphInterpreter.scala:519)
-	at akka.stream.impl.fusing.GraphInterpreter.processEvent(GraphInterpreter.scala:482)
-	at akka.stream.impl.fusing.GraphInterpreter.execute(GraphInterpreter.scala:378)
-	at akka.stream.impl.fusing.GraphInterpreterShell.runBatch(ActorGraphInterpreter.scala:585)
-	at akka.stream.impl.fusing.GraphInterpreterShell$AsyncInput.execute(ActorGraphInterpreter.scala:469)
-	at akka.stream.impl.fusing.GraphInterpreterShell.processEvent(ActorGraphInterpreter.scala:560)
-	at akka.stream.impl.fusing.ActorGraphInterpreter.akka$stream$impl$fusing$ActorGraphInterpreter$$processEvent(ActorGraphInterpreter.scala:742)
-	at akka.stream.impl.fusing.ActorGraphInterpreter$$anonfun$receive$1.applyOrElse(ActorGraphInterpreter.scala:757)
-	at akka.actor.Actor.aroundReceive(Actor.scala:517)
-	at akka.actor.Actor.aroundReceive$(Actor.scala:515)
-	at akka.stream.impl.fusing.ActorGraphInterpreter.aroundReceive(ActorGraphInterpreter.scala:667)
-	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:590)
-	at akka.actor.ActorCell.invoke(ActorCell.scala:559)
-	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:257)
-	at akka.dispatch.Mailbox.run(Mailbox.scala:224)
-	at akka.dispatch.Mailbox.exec(Mailbox.scala:234)
-	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
-	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
-	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
-	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
-2018-10-21 16:44:04,063 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-29 - Shutting down connection pool.
-2018-10-21 16:44:04,325 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-29 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 7: user is deprecated, use username instead
-2018-10-21 16:44:04,325 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-29 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
-2018-10-21 16:44:04,326 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-29 - Creating Pool for datasource 'default'
-2018-10-21 16:44:07,197 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-28 - Shutting down connection pool.
-2018-10-21 16:44:07,379 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-28 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 7: user is deprecated, use username instead
-2018-10-21 16:44:07,379 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-28 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
-2018-10-21 16:44:07,379 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-28 - Creating Pool for datasource 'default'
-2018-10-21 16:44:07,561 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-28 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 15: play.crypto.secret is deprecated, use play.http.secret.key instead
-2018-10-21 16:44:07,574 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-28 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-10-21 16:44:07,583 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-28 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+2018-10-23 13:36:22,326 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-6 - Application started (Dev)
+2018-10-23 13:36:35,240 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-5 - select t0.id, t0.user_name, t0.password, t1.id, t1.permission_value from user t0 left join user_aksesuser t1z_ on t1z_.user_id = t0.id  left join aksesuser t1 on t1.id = t1z_.aksesuser_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-23 13:36:35,252 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-5 - select int_.user_id, t0.id, t0.name from security_role t0 left join user_security_role int_ on int_.security_role_id = t0.id  where (int_.user_id) in (1 ) ;
+2018-10-23 13:36:35,371 [INFO] from application in application-akka.actor.default-dispatcher-5 - Calling action for Hello
+2018-10-23 13:36:35,379 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-4 - select t0.id, t0.user_name, t0.password, t1.id, t1.permission_value from user t0 left join user_aksesuser t1z_ on t1z_.user_id = t0.id  left join aksesuser t1 on t1.id = t1z_.aksesuser_id  where t0.user_name = 'steve'  order by t0.id;
+2018-10-23 13:36:43,905 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - select t0.id, t0.user_name, t0.password, t1.id, t1.permission_value from user t0 left join user_aksesuser t1z_ on t1z_.user_id = t0.id  left join aksesuser t1 on t1.id = t1z_.aksesuser_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-23 13:36:43,910 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - select int_.user_id, t0.id, t0.name from security_role t0 left join user_security_role int_ on int_.security_role_id = t0.id  where (int_.user_id) in (1 ) ;
+2018-10-23 13:36:43,943 [INFO] from application in application-akka.actor.default-dispatcher-6 - Calling action for Hello
+2018-10-23 13:36:43,945 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-4 - select t0.id, t0.user_name, t0.password, t1.id, t1.permission_value from user t0 left join user_aksesuser t1z_ on t1z_.user_id = t0.id  left join aksesuser t1 on t1.id = t1z_.aksesuser_id  where t0.user_name = 'steve'  order by t0.id;
+2018-10-23 13:39:07,066 [INFO] from application in application-akka.actor.default-dispatcher-7 - Shutting down connection pool.
+2018-10-23 13:39:07,316 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-13 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
+2018-10-23 13:39:07,317 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-13 - Creating Pool for datasource 'default'
+2018-10-23 13:39:07,542 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-13 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
+2018-10-23 13:39:07,543 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-13 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script from play_evolutions order by id;
+2018-10-23 13:39:07,552 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-13 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 17: play.crypto.secret is deprecated, use play.http.secret.key instead
+2018-10-23 13:39:07,587 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-13 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
     play.filters.csrf.CSRFFilter
     play.filters.headers.SecurityHeadersFilter
     play.filters.hosts.AllowedHostsFilter
     play.filters.csrf.CSRFFilter
 
-2018-10-21 16:44:07,584 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-28 - Application started (Dev)
+2018-10-23 13:39:07,588 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-13 - Application started (Dev)
+2018-10-23 13:39:07,624 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - select t0.id, t0.user_name, t0.password, t1.id, t1.permission_value from user t0 left join user_aksesuser t1z_ on t1z_.user_id = t0.id  left join aksesuser t1 on t1.id = t1z_.aksesuser_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-23 13:39:07,630 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - select int_.user_id, t0.id, t0.name from security_role t0 left join user_security_role int_ on int_.security_role_id = t0.id  where (int_.user_id) in (1 ) ;
+2018-10-23 13:39:07,749 [INFO] from application in application-akka.actor.default-dispatcher-6 - Calling action for Hello
+2018-10-23 13:39:07,751 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-7 - select t0.id, t0.user_name, t0.password, t1.id, t1.permission_value from user t0 left join user_aksesuser t1z_ on t1z_.user_id = t0.id  left join aksesuser t1 on t1.id = t1z_.aksesuser_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-23 13:39:07,761 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-7 - select int_.user_id, t0.id, t0.name from security_role t0 left join user_security_role int_ on int_.security_role_id = t0.id  where (int_.user_id) in (1 ) ;
+2018-10-23 13:39:07,768 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-4 - select t0.nim_asprak, t0.nama, t0.role, t0.active, t0.due_date, t0.user_id from asprak t0;
+2018-10-23 13:39:20,275 [INFO] from application in application-akka.actor.default-dispatcher-7 - Calling action for Hello
+2018-10-23 13:39:20,277 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-2 - select t0.id, t0.user_name, t0.password, t1.id, t1.permission_value from user t0 left join user_aksesuser t1z_ on t1z_.user_id = t0.id  left join aksesuser t1 on t1.id = t1z_.aksesuser_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-23 13:39:20,280 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-2 - select int_.user_id, t0.id, t0.name from security_role t0 left join user_security_role int_ on int_.security_role_id = t0.id  where (int_.user_id) in (1 ) ;
+2018-10-23 13:39:20,283 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-7 - select t0.nim_asprak, t0.nama, t0.role, t0.active, t0.due_date, t0.user_id from asprak t0 where t0.nim_asprak = 6701160045  ;
+2018-10-23 13:39:24,715 [INFO] from application in application-akka.actor.default-dispatcher-7 - Calling action for Hello
+2018-10-23 13:39:24,716 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-2 - select t0.id, t0.user_name, t0.password, t1.id, t1.permission_value from user t0 left join user_aksesuser t1z_ on t1z_.user_id = t0.id  left join aksesuser t1 on t1.id = t1z_.aksesuser_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-23 13:39:24,719 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-2 - select int_.user_id, t0.id, t0.name from security_role t0 left join user_security_role int_ on int_.security_role_id = t0.id  where (int_.user_id) in (1 ) ;
+2018-10-23 13:39:24,734 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-7 - update asprak set nama='Biawak', due_date=to_timestamp('2018-10-23 13:39:24.721', 'yyyy-MM-dd hh24:mi:ss.ff3') where nim_asprak=6701160045;
+2018-10-23 13:39:24,738 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-7 - select t0.id_plotting from ploting_asprak t0 where asprak_nim_asprak=6701160045 ;
+2018-10-23 13:39:24,798 [INFO] from application in application-akka.actor.default-dispatcher-2 - Calling action for Hello
+2018-10-23 13:39:24,800 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-4 - select t0.id, t0.user_name, t0.password, t1.id, t1.permission_value from user t0 left join user_aksesuser t1z_ on t1z_.user_id = t0.id  left join aksesuser t1 on t1.id = t1z_.aksesuser_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-23 13:39:24,803 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-4 - select int_.user_id, t0.id, t0.name from security_role t0 left join user_security_role int_ on int_.security_role_id = t0.id  where (int_.user_id) in (1 ) ;
+2018-10-23 13:39:24,805 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-4 - select t0.nim_asprak, t0.nama, t0.role, t0.active, t0.due_date, t0.user_id from asprak t0;
+2018-10-23 13:43:11,901 [INFO] from application in application-akka.actor.default-dispatcher-8 - Shutting down connection pool.
+2018-10-23 13:43:12,356 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-28 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
+2018-10-23 13:43:12,356 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-28 - Creating Pool for datasource 'default'
+2018-10-23 13:43:12,607 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-28 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
+2018-10-23 13:43:12,608 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-28 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script from play_evolutions order by id;
+2018-10-23 13:43:12,615 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-28 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 17: play.crypto.secret is deprecated, use play.http.secret.key instead
+2018-10-23 13:43:12,648 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-28 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+    play.filters.csrf.CSRFFilter
+
+2018-10-23 13:43:12,649 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-28 - Application started (Dev)
+2018-10-23 13:43:12,682 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-28 - Calling action for Hello
+2018-10-23 13:43:12,685 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-7 - select t0.id, t0.user_name, t0.password, t1.id, t1.permission_value from user t0 left join user_aksesuser t1z_ on t1z_.user_id = t0.id  left join aksesuser t1 on t1.id = t1z_.aksesuser_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-23 13:43:12,687 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-7 - select int_.user_id, t0.id, t0.name from security_role t0 left join user_security_role int_ on int_.security_role_id = t0.id  where (int_.user_id) in (1 ) ;
+2018-10-23 13:43:12,690 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-8 - select t0.nim_asprak, t0.nama, t0.role, t0.active, t0.due_date, t0.user_id from asprak t0;
+2018-10-23 13:43:57,597 [INFO] from application in application-akka.actor.default-dispatcher-9 - Shutting down connection pool.
+2018-10-23 13:43:57,924 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-29 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
+2018-10-23 13:43:57,925 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-29 - Creating Pool for datasource 'default'
+2018-10-23 13:43:58,030 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-29 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
+2018-10-23 13:43:58,030 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-29 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script from play_evolutions order by id;
+2018-10-23 13:43:58,033 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-29 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 17: play.crypto.secret is deprecated, use play.http.secret.key instead
+2018-10-23 13:43:58,086 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-29 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+    play.filters.csrf.CSRFFilter
+
+2018-10-23 13:43:58,088 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-29 - Application started (Dev)
+2018-10-23 13:43:58,127 [INFO] from application in application-akka.actor.default-dispatcher-4 - Calling action for Hello
+2018-10-23 13:43:58,131 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-2 - select t0.id, t0.user_name, t0.password, t1.id, t1.permission_value from user t0 left join user_aksesuser t1z_ on t1z_.user_id = t0.id  left join aksesuser t1 on t1.id = t1z_.aksesuser_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-23 13:43:58,134 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-2 - select int_.user_id, t0.id, t0.name from security_role t0 left join user_security_role int_ on int_.security_role_id = t0.id  where (int_.user_id) in (1 ) ;
+2018-10-23 13:43:58,136 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-2 - select t0.nim_asprak, t0.nama, t0.role, t0.active, t0.due_date, t0.user_id from asprak t0;
+2018-10-23 13:44:24,257 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - select t0.id, t0.user_name, t0.password, t1.id, t1.permission_value from user t0 left join user_aksesuser t1z_ on t1z_.user_id = t0.id  left join aksesuser t1 on t1.id = t1z_.aksesuser_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-23 13:44:24,259 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - select int_.user_id, t0.id, t0.name from security_role t0 left join user_security_role int_ on int_.security_role_id = t0.id  where (int_.user_id) in (1 ) ;
+2018-10-23 13:44:24,285 [INFO] from application in application-akka.actor.default-dispatcher-6 - Calling action for Hello
+2018-10-23 13:44:24,286 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-7 - select t0.id, t0.user_name, t0.password, t1.id, t1.permission_value from user t0 left join user_aksesuser t1z_ on t1z_.user_id = t0.id  left join aksesuser t1 on t1.id = t1z_.aksesuser_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-23 13:44:24,288 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-7 - select int_.user_id, t0.id, t0.name from security_role t0 left join user_security_role int_ on int_.security_role_id = t0.id  where (int_.user_id) in (1 ) ;
+2018-10-23 13:48:12,649 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-57 - Shutting down connection pool.
+2018-10-23 13:48:12,905 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-57 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
+2018-10-23 13:48:12,906 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-57 - Creating Pool for datasource 'default'
+2018-10-23 13:48:13,071 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-57 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
+2018-10-23 13:48:13,072 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-57 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script from play_evolutions order by id;
+2018-10-23 13:48:13,075 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-57 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 17: play.crypto.secret is deprecated, use play.http.secret.key instead
+2018-10-23 13:48:13,113 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-57 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+    play.filters.csrf.CSRFFilter
+
+2018-10-23 13:48:13,114 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-57 - Application started (Dev)
+2018-10-23 13:48:13,151 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-2 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-23 13:48:13,230 [INFO] from application in application-akka.actor.default-dispatcher-2 - Calling action for Hello
+2018-10-23 13:48:13,233 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-3 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;

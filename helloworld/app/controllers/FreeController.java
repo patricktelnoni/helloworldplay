@@ -7,11 +7,10 @@ import play.mvc.*;
 import play.data.*;
 
 import javax.inject.*;
+import java.util.List;
 
 
-
-
-public class FreeController extends Controller{ 
+public class FreeController extends Controller{
     @Inject FormFactory formFactory;    
     
     public Result cekLogin(){
@@ -38,12 +37,21 @@ public class FreeController extends Controller{
     
     public Result doLogin(){        
         DynamicForm  requestData = formFactory.form().bindFromRequest();
-        Asprak asprak            = Asprak.find.byId(Long.parseLong(requestData.get("nim")));        
-        session("email", requestData.get("nim"));
-        session("akses", "asprak");
+        AuthorisedUser as= AuthorisedUser.findByUserName(requestData.get("nim"));
+        //return (Result) ok(as.permissions.get(0).value);
+        if(as.password.equals(requestData.get("password"))){
+            session("email", requestData.get("nim"));
+            session("akses", as.roles.get(0).getName());
+            session("loggedin", String.valueOf(true));
+        }
+        return redirect(routes.HomeController.daftarAsprak());
 
-        return redirect(routes.FreeController.dashboard());
+    }
 
+    public Result logout() {
+        session().remove("email");
+        session().remove("akses");
+        return redirect(routes.FreeController.index());
     }
 
     

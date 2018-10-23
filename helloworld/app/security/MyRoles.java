@@ -22,9 +22,10 @@ import be.objectify.deadbolt.java.models.Role;
  */
 public enum MyRoles implements Role
 {
-    foo,
-    bar,
-    hurdy;
+    Dosen,
+    Laboran,
+    Asprak,
+    Praktikan;
 
     @Override
     public String getName()

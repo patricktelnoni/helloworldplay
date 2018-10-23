@@ -18,6 +18,7 @@ resolvers += Resolver.sonatypeRepo("releases")
 libraryDependencies ++= Seq(
   guice,
   filters,
+  evolutions,
   javaJdbc,
   ehcache,
   evolutions,

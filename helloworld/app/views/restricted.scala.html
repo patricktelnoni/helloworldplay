@@ -1,4 +1,4 @@
-@(subject: be.objectify.deadbolt.java.models.Subject)
+@(connected: Boolean)
 
 
 <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.css")">
@@ -7,14 +7,18 @@
         console.log("The fuck is gong on dude?");
         $(document).ready(function(){
             setTimeout(function() {
-                window.location.href = "@routes.FreeController.index()"
+                @if(connected){
+                    window.location.href = "@routes.HomeController.daftarAsprak()"
+                }else{
+                    window.location.href = "@routes.FreeController.index()"
+                }
             }, 5000);
         });
 
 </script>
 <div class="row-fluid" id="config">
   <div class="span10">
-      <h1>You're not authorized so goddamn stalker..!!!</h1>
+      <h1>We're checking for authorization. We'll redirect you to the proper page!!!</h1>
 
      
   </div>

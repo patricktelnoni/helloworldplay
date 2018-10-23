@@ -27,6 +27,7 @@ import play.data.validation.*;
  * @author Steve Chaloner (steve@objectify.be)
  */
 @Entity
+@Table(name = "aksesuser")
 public class UserPermission extends Model implements Permission
 {
     @Id

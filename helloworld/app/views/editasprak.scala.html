@@ -1,9 +1,8 @@
+
 @(id:Long, filledAsprakForm: Form[Asprak])
 
-@import helper._
-
 <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.css")">
-
+@import helper._
 
 
 @helper.form(CSRF(routes.HomeController.updateAsprak(id)), 

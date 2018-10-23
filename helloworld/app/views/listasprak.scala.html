@@ -1,7 +1,7 @@
 @(listAsprak: List[Asprak], asprakForm: Form[Asprak])
 
 @import helper._
-<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.css")">
+@laboran.menu.render()
 <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("javascripts/jquery.js")">
 
 @main("Daftar Asprak") {
@@ -24,7 +24,8 @@
                 <td scope="row">@asprak.nim_asprak</td>
                 <td>@asprak.nama</td>
                 <td>@asprak.role</td>
-                <td><button type="submit" class="btn btn-warning"><a href="@routes.HomeController.editAsprak(asprak.nim_asprak)">Edit</a></button>
+                <td>
+                    <a class="btn btn-warning" href="@routes.HomeController.editAsprak(asprak.nim_asprak)">Edit</a>
                     |@form(CSRF(routes.HomeController.hapusAsprak(asprak.nim_asprak))) {
                     <input type="submit" value="Delete">
                 }</td>

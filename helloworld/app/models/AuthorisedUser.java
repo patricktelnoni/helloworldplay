@@ -13,6 +13,7 @@ import play.data.validation.*;
  * @author Steve Chaloner (steve@objectify.be)
  */
 @Entity
+@Table(name = "user")
 public class AuthorisedUser extends Model implements Subject
 {
     @Id
@@ -51,9 +52,17 @@ public class AuthorisedUser extends Model implements Subject
     public static AuthorisedUser findByUserName(String userName)
     {
 
-        return find.query().where()
+        return find.query().fetch("roles").where()
                    .eq("userName",
                        userName)
                    .findOne();
+    }
+    public static List<AuthorisedUser> doLogin(String userName, String Password)
+    {
+
+        return find.query().fetch("roles").where().eq("password", Password)
+                   .eq("userName",
+                       userName)
+                   .findList();
     }
 }
