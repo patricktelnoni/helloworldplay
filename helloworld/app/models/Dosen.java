@@ -20,4 +20,6 @@ public class Dosen extends Model {
     AuthorisedUser authorisedUser;
 
     public static final Finder<Long, Dosen> find = new Finder<>(Dosen.class);
+
+
 }

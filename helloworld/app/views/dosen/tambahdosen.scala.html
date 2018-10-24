@@ -1,0 +1,11 @@
+@(dosenForm: Form[Dosen])
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/stylesheets/bootstrap.css")">
+@import helper._
+    @dosen.menu.render()
+@helper.form(CSRF(routes.DosenController.tambahDosen())){
+    @helper.inputText(dosenForm("Nim"), 'id -> "email", 'size -> 30)
+    @helper.inputText(dosenForm("Nama"))
+    <input type="submit" value="Tambah Asprak" />
+}
+
+

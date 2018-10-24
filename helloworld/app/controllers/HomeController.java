@@ -5,16 +5,9 @@ import be.objectify.deadbolt.java.actions.Restrict;
 import models.*;
 import forms.*;
 import play.libs.Json;
-import play.Logger;
 import play.mvc.*;
 import play.data.*;
-import play.libs.concurrent.HttpExecutionContext;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
 import javax.inject.*;
-import java.util.List;
-import play.mvc.Security.*;
-import views.html.index;
 
 
 
@@ -45,7 +38,7 @@ public class HomeController extends Controller{
          Form<LoginForm> loginForm = formFactory.form(LoginForm.class);
          Form<Asprak> asprakForm = formFactory.form(Asprak.class);
          return ok(
-             views.html.listasprak.render(Asprak.all(), asprakForm)
+             views.html.asprak.listasprak.render(Asprak.all(), asprakForm)
          );
 //        String user = session("email");
 //        Logger.info("Calling action for {}", user);
@@ -56,7 +49,7 @@ public class HomeController extends Controller{
     public Result formAsprak(){   
            
         Form<Asprak> asprakForm = formFactory.form(Asprak.class);
-        return ok(views.html.tambahasprak.render(asprakForm));
+        return ok(views.html.asprak.tambahasprak.render(asprakForm));
 
     }
 
@@ -81,7 +74,7 @@ public class HomeController extends Controller{
         Form<Asprak> asprakForm         = formFactory.form(Asprak.class);
         Form<Asprak> filledAsprakForm   = asprakForm.fill(asprak);
         return ok(
-            views.html.editasprak.render(id, filledAsprakForm)
+            views.html.asprak.editasprak.render(id, filledAsprakForm)
         );
     }
 

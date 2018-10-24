@@ -5,12 +5,21 @@
 # An example controller showing a sample home page
 GET     /                           controllers.FreeController.index
 GET     /home                       controllers.FreeController.dashboard
-POST    /hapus_asprak/:id    controllers.HomeController.hapusAsprak(id: Long)
+#Asprak
 GET     /list_asprak                controllers.HomeController.daftarAsprak
 GET     /form_asprak                controllers.HomeController.formAsprak
+GET     /edit_asprak/:id            controllers.HomeController.editAsprak(id: Long)
+POST    /update_asprak/:id          controllers.HomeController.updateAsprak(id: Long)
+POST    /hapus_asprak/:id           controllers.HomeController.hapusAsprak(id: Long)
 POST    /tambah_asprak              controllers.HomeController.tambahAsprak
-GET     /edit_asprak/:id       controllers.HomeController.editAsprak(id: Long)
-POST    /update_asprak/:id   controllers.HomeController.updateAsprak(id: Long)
+#Dosen
+GET     /list_dosen                 controllers.DosenController.daftarDosen
+GET     /form_dosen                 controllers.DosenController.formDosen
+GET     /edit_dosen/:id             controllers.DosenController.editDosen(id: Long)
+POST    /update_dosen/:id           controllers.DosenController.updateDosen(id: Long)
+POST    /hapus_dosen/:id            controllers.DosenController.hapusDosen(id: Long)
+POST    /tambah_dosen               controllers.DosenController.tambahDosen
+
 POST    /do_login                   controllers.FreeController.doLogin
 GET    /cek_login                   controllers.FreeController.cekLogin
 GET    /logout                      controllers.FreeController.logout

@@ -1,8 +1,9 @@
 
 @(id:Long, filledAsprakForm: Form[Asprak])
 
-<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/css/bootstrap.css")">
 @import helper._
+@laboran.menu.render()
 
 
 @helper.form(CSRF(routes.HomeController.updateAsprak(id)), 

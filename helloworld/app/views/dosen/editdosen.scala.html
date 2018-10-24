@@ -1,0 +1,27 @@
+
+@(id:Long, filledDosenForm: Form[Dosen])
+
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/css/bootstrap.css")">
+@import helper._
+    @dosen.menu.render()
+
+@helper.form(CSRF(routes.DosenController.updateDosen(id)),
+    args = 'class -> "text-left col-sm-4", 'style -> "margin-left:10%;"){
+    <div class="form-group">
+        @helper.inputText(filledDosenForm("Nim_dosen"),
+                            '_label -> "Nim", 
+                            'name->"nim", 
+                            'size -> 30,
+                            'class -> "form-control")
+    </div>
+    <div class="form-group">
+        @helper.inputText(filledDosenForm("Name"),
+                            '_label -> "Nama", 
+                            'name->"nama", 
+                            'size -> 30,
+                            'class -> "form-control")
+    </div>
+    <button type="submit" class="btn btn-primary">Update Dosen</button>
+
+
+}
