@@ -1,27 +1,364 @@
-2018-10-24 22:12:56,579 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-11 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
-2018-10-24 22:12:56,585 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-11 - Creating Pool for datasource 'default'
-2018-10-24 22:12:57,890 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-11 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
-2018-10-24 22:12:57,893 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-11 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script from play_evolutions order by id;
-2018-10-24 22:12:57,959 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-11 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 17: play.crypto.secret is deprecated, use play.http.secret.key instead
-2018-10-24 22:12:58,218 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-11 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+2018-10-26 11:14:18,086 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-4 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
+2018-10-26 11:14:18,098 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-4 - Creating Pool for datasource 'default'
+2018-10-26 11:14:19,533 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-4 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
+2018-10-26 11:14:19,541 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-4 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script from play_evolutions order by id;
+2018-10-26 11:14:19,592 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-4 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 17: play.crypto.secret is deprecated, use play.http.secret.key instead
+2018-10-26 11:14:19,948 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-4 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
     play.filters.csrf.CSRFFilter
     play.filters.headers.SecurityHeadersFilter
     play.filters.hosts.AllowedHostsFilter
     play.filters.csrf.CSRFFilter
 
-2018-10-24 22:12:58,225 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-11 - Application started (Dev)
-2018-10-24 22:12:58,589 [INFO] from application in application-akka.actor.default-dispatcher-4 - Calling action for Hello
-2018-10-24 22:12:58,701 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
-2018-10-24 22:12:58,718 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - delete from dosen where nim_dosen=13880185;
-2018-10-24 22:12:58,802 [INFO] from application in application-akka.actor.default-dispatcher-6 - Calling action for Hello
-2018-10-24 22:12:58,804 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-4 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
-2018-10-24 22:12:58,812 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-4 - select t0.nim_dosen, t0.name, t0.user_id from dosen t0;
-2018-10-24 22:13:01,116 [INFO] from application in application-akka.actor.default-dispatcher-3 - Calling action for Hello
-2018-10-24 22:13:01,119 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
-2018-10-24 22:13:14,781 [INFO] from application in application-akka.actor.default-dispatcher-6 - Calling action for Hello
-2018-10-24 22:13:14,782 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-4 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
-2018-10-24 22:13:14,810 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - insert into dosen (nim_dosen, name, user_id) values (13880185,'Reza Budiawan Rahardjo',null);
-2018-10-24 22:13:14,834 [INFO] from application in application-akka.actor.default-dispatcher-4 - Calling action for Hello
-2018-10-24 22:13:14,836 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-7 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
-2018-10-24 22:13:14,839 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-7 - select t0.nim_dosen, t0.name, t0.user_id from dosen t0;
+2018-10-26 11:14:19,956 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-4 - Application started (Dev)
+2018-10-26 11:14:32,938 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-3 - Shutting down connection pool.
+2018-10-26 11:14:33,660 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-3 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
+2018-10-26 11:14:33,660 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-3 - Creating Pool for datasource 'default'
+2018-10-26 11:14:33,804 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-3 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
+2018-10-26 11:14:33,807 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-3 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script from play_evolutions order by id;
+2018-10-26 11:14:33,842 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-3 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 17: play.crypto.secret is deprecated, use play.http.secret.key instead
+2018-10-26 11:14:33,898 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-3 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+    play.filters.csrf.CSRFFilter
+
+2018-10-26 11:14:33,899 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-3 - Application started (Dev)
+2018-10-26 11:14:34,144 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-3 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 11:14:34,278 [INFO] from application in application-akka.actor.default-dispatcher-3 - Calling action for Hello
+2018-10-26 11:14:34,288 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-3 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 11:14:34,299 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-2 - select t0.nim_asprak, t0.nama, t0.role, t0.active, t0.due_date, t0.user_id from asprak t0;
+2018-10-26 11:14:44,086 [INFO] from application in application-akka.actor.default-dispatcher-4 - Calling action for Hello
+2018-10-26 11:14:44,088 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 11:14:44,090 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - select t0.nim_dosen, t0.name, t0.user_id from dosen t0;
+2018-10-26 11:14:52,079 [INFO] from application in application-akka.actor.default-dispatcher-8 - Calling action for Hello
+2018-10-26 11:14:52,081 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-4 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 11:54:43,224 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-30 - Shutting down connection pool.
+2018-10-26 11:54:43,635 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-30 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
+2018-10-26 11:54:43,635 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-30 - Creating Pool for datasource 'default'
+2018-10-26 11:54:43,946 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-30 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
+2018-10-26 11:54:43,950 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-30 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script from play_evolutions order by id;
+2018-10-26 11:54:43,964 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-30 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 17: play.crypto.secret is deprecated, use play.http.secret.key instead
+2018-10-26 11:54:44,003 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-30 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+    play.filters.csrf.CSRFFilter
+
+2018-10-26 11:54:44,003 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-30 - Application started (Dev)
+2018-10-26 11:55:11,741 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-3 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 11:55:11,804 [INFO] from application in application-akka.actor.default-dispatcher-3 - Calling action for Hello
+2018-10-26 11:55:11,806 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-3 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 11:55:11,808 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-5 - select t0.nim_asprak, t0.nama, t0.role, t0.active, t0.due_date, t0.user_id from asprak t0;
+2018-10-26 11:55:15,894 [INFO] from application in application-akka.actor.default-dispatcher-9 - Calling action for Hello
+2018-10-26 11:55:15,896 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-2 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 11:55:15,898 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-2 - select t0.nim_asprak, t0.nama, t0.role, t0.active, t0.due_date, t0.user_id from asprak t0;
+2018-10-26 11:55:17,274 [INFO] from application in application-akka.actor.default-dispatcher-2 - Calling action for Hello
+2018-10-26 11:55:17,276 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-8 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 11:55:17,278 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-3 - select t0.nim_dosen, t0.name, t0.user_id from dosen t0;
+2018-10-26 11:55:19,899 [INFO] from application in application-akka.actor.default-dispatcher-2 - Calling action for Hello
+2018-10-26 11:55:19,900 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-3 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 11:55:47,611 [INFO] from application in application-akka.actor.default-dispatcher-10 - Calling action for Hello
+2018-10-26 11:55:47,613 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-5 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 11:55:47,626 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-5 - insert into user (user_name, password) values ('09870087','1234');
+2018-10-26 11:55:47,641 [ERROR] from application in application-akka.actor.default-dispatcher-10 - 
+
+! @79kn57d62 - Internal server error, for (POST) [/tambah_dosen?csrfToken=3b408b3b92834762f5e91d6854094915ac3ba50e-1540529719898-1aa95b7fce0f8332c3d13420] ->
+ 
+play.api.http.HttpErrorHandlerExceptions$$anon$1: Execution exception[[CompletionException: java.lang.NullPointerException]]
+	at play.api.http.HttpErrorHandlerExceptions$.throwableToUsefulException(HttpErrorHandler.scala:251)
+	at play.api.http.DefaultHttpErrorHandler.onServerError(HttpErrorHandler.scala:178)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:363)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:361)
+	at scala.concurrent.Future.$anonfun$recoverWith$1(Future.scala:414)
+	at scala.concurrent.impl.Promise.$anonfun$transformWith$1(Promise.scala:37)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:60)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:91)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:81)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:91)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:43)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.util.concurrent.CompletionException: java.lang.NullPointerException
+	at java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:273)
+	at java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:280)
+	at java.util.concurrent.CompletableFuture.uniCompose(CompletableFuture.java:961)
+	at java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:926)
+	at java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:442)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:56)
+	... 6 common frames omitted
+Caused by: java.lang.NullPointerException: null
+	at controllers.DosenController.tambahDosen(DosenController.java:52)
+	at router.Routes$$anonfun$routes$1.$anonfun$applyOrElse$28(Routes.scala:601)
+	at play.core.routing.HandlerInvokerFactory$$anon$3.resultCall(HandlerInvoker.scala:134)
+	at play.core.routing.HandlerInvokerFactory$$anon$3.resultCall(HandlerInvoker.scala:133)
+	at play.core.routing.HandlerInvokerFactory$JavaActionInvokerFactory$$anon$8$$anon$2$$anon$1.invocation(HandlerInvoker.scala:108)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:88)
+	at play.http.DefaultActionCreator$1.call(DefaultActionCreator.java:31)
+	at be.objectify.deadbolt.java.actions.AbstractDeadboltAction.authorizeAndExecute(AbstractDeadboltAction.java:301)
+	at be.objectify.deadbolt.java.ConstraintLogic.pass(ConstraintLogic.java:402)
+	at be.objectify.deadbolt.java.ConstraintLogic.lambda$restrict$6(ConstraintLogic.java:153)
+	at java.util.concurrent.CompletableFuture.uniCompose(CompletableFuture.java:952)
+	... 9 common frames omitted
+2018-10-26 11:56:53,306 [INFO] from application in application-akka.actor.default-dispatcher-13 - Shutting down connection pool.
+2018-10-26 11:56:53,540 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-37 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
+2018-10-26 11:56:53,540 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-37 - Creating Pool for datasource 'default'
+2018-10-26 11:56:53,746 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-37 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
+2018-10-26 11:56:53,748 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-37 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script from play_evolutions order by id;
+2018-10-26 11:56:53,753 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-37 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 17: play.crypto.secret is deprecated, use play.http.secret.key instead
+2018-10-26 11:56:53,775 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-37 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+    play.filters.csrf.CSRFFilter
+
+2018-10-26 11:56:53,776 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-37 - Application started (Dev)
+2018-10-26 11:56:53,808 [INFO] from application in application-akka.actor.default-dispatcher-6 - Calling action for Hello
+2018-10-26 11:56:53,813 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-2 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 11:57:00,813 [INFO] from application in application-akka.actor.default-dispatcher-6 - Calling action for Hello
+2018-10-26 11:57:00,817 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-2 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 11:57:00,823 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-2 - insert into user (user_name, password) values ('09870087','1234');
+2018-10-26 11:57:00,837 [ERROR] from application in application-akka.actor.default-dispatcher-6 - 
+
+! @79kn5bhd8 - Internal server error, for (POST) [/tambah_dosen?csrfToken=58e2fb90fbaa01149969050979a5bbb573cb7938-1540529813792-1aa95b7fce0f8332c3d13420] ->
+ 
+play.api.http.HttpErrorHandlerExceptions$$anon$1: Execution exception[[CompletionException: java.lang.NullPointerException]]
+	at play.api.http.HttpErrorHandlerExceptions$.throwableToUsefulException(HttpErrorHandler.scala:251)
+	at play.api.http.DefaultHttpErrorHandler.onServerError(HttpErrorHandler.scala:178)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:363)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:361)
+	at scala.concurrent.Future.$anonfun$recoverWith$1(Future.scala:414)
+	at scala.concurrent.impl.Promise.$anonfun$transformWith$1(Promise.scala:37)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:60)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:91)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:81)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:91)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:43)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.util.concurrent.CompletionException: java.lang.NullPointerException
+	at java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:273)
+	at java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:280)
+	at java.util.concurrent.CompletableFuture.uniCompose(CompletableFuture.java:961)
+	at java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:926)
+	at java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:442)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:56)
+	... 6 common frames omitted
+Caused by: java.lang.NullPointerException: null
+	at controllers.DosenController.tambahDosen(DosenController.java:52)
+	at router.Routes$$anonfun$routes$1.$anonfun$applyOrElse$28(Routes.scala:601)
+	at play.core.routing.HandlerInvokerFactory$$anon$3.resultCall(HandlerInvoker.scala:134)
+	at play.core.routing.HandlerInvokerFactory$$anon$3.resultCall(HandlerInvoker.scala:133)
+	at play.core.routing.HandlerInvokerFactory$JavaActionInvokerFactory$$anon$8$$anon$2$$anon$1.invocation(HandlerInvoker.scala:108)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:88)
+	at play.http.DefaultActionCreator$1.call(DefaultActionCreator.java:31)
+	at be.objectify.deadbolt.java.actions.AbstractDeadboltAction.authorizeAndExecute(AbstractDeadboltAction.java:301)
+	at be.objectify.deadbolt.java.ConstraintLogic.pass(ConstraintLogic.java:402)
+	at be.objectify.deadbolt.java.ConstraintLogic.lambda$restrict$6(ConstraintLogic.java:153)
+	at java.util.concurrent.CompletableFuture.uniCompose(CompletableFuture.java:952)
+	... 9 common frames omitted
+2018-10-26 11:58:17,918 [INFO] from application in application-akka.actor.default-dispatcher-7 - Shutting down connection pool.
+2018-10-26 11:58:18,240 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-35 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
+2018-10-26 11:58:18,240 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-35 - Creating Pool for datasource 'default'
+2018-10-26 11:58:18,515 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-35 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
+2018-10-26 11:58:18,516 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-35 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script from play_evolutions order by id;
+2018-10-26 11:58:18,525 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-35 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 17: play.crypto.secret is deprecated, use play.http.secret.key instead
+2018-10-26 11:58:18,563 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-35 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+    play.filters.csrf.CSRFFilter
+
+2018-10-26 11:58:18,572 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-35 - Application started (Dev)
+2018-10-26 11:58:18,623 [INFO] from application in application-akka.actor.default-dispatcher-2 - Calling action for Hello
+2018-10-26 11:58:18,635 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-8 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 11:58:18,642 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-8 - insert into user (user_name, password) values ('09870087','1234');
+2018-10-26 11:58:18,652 [ERROR] from application in application-akka.actor.default-dispatcher-8 - 
+
+! @79kn5g2g5 - Internal server error, for (POST) [/tambah_dosen?csrfToken=58e2fb90fbaa01149969050979a5bbb573cb7938-1540529813792-1aa95b7fce0f8332c3d13420] ->
+ 
+play.api.http.HttpErrorHandlerExceptions$$anon$1: Execution exception[[CompletionException: java.lang.NullPointerException]]
+	at play.api.http.HttpErrorHandlerExceptions$.throwableToUsefulException(HttpErrorHandler.scala:251)
+	at play.api.http.DefaultHttpErrorHandler.onServerError(HttpErrorHandler.scala:178)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:363)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:361)
+	at scala.concurrent.Future.$anonfun$recoverWith$1(Future.scala:414)
+	at scala.concurrent.impl.Promise.$anonfun$transformWith$1(Promise.scala:37)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:60)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:91)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:81)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:91)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:43)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.util.concurrent.CompletionException: java.lang.NullPointerException
+	at java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:273)
+	at java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:280)
+	at java.util.concurrent.CompletableFuture.uniCompose(CompletableFuture.java:961)
+	at java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:926)
+	at java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:442)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:56)
+	... 6 common frames omitted
+Caused by: java.lang.NullPointerException: null
+	at controllers.DosenController.tambahDosen(DosenController.java:53)
+	at router.Routes$$anonfun$routes$1.$anonfun$applyOrElse$28(Routes.scala:601)
+	at play.core.routing.HandlerInvokerFactory$$anon$3.resultCall(HandlerInvoker.scala:134)
+	at play.core.routing.HandlerInvokerFactory$$anon$3.resultCall(HandlerInvoker.scala:133)
+	at play.core.routing.HandlerInvokerFactory$JavaActionInvokerFactory$$anon$8$$anon$2$$anon$1.invocation(HandlerInvoker.scala:108)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:88)
+	at play.http.DefaultActionCreator$1.call(DefaultActionCreator.java:31)
+	at be.objectify.deadbolt.java.actions.AbstractDeadboltAction.authorizeAndExecute(AbstractDeadboltAction.java:301)
+	at be.objectify.deadbolt.java.ConstraintLogic.pass(ConstraintLogic.java:402)
+	at be.objectify.deadbolt.java.ConstraintLogic.lambda$restrict$6(ConstraintLogic.java:153)
+	at java.util.concurrent.CompletableFuture.uniCompose(CompletableFuture.java:952)
+	... 9 common frames omitted
+2018-10-26 12:06:54,212 [INFO] from application in application-akka.actor.default-dispatcher-10 - Shutting down connection pool.
+2018-10-26 12:06:54,582 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-62 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
+2018-10-26 12:06:54,587 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-62 - Creating Pool for datasource 'default'
+2018-10-26 12:06:54,689 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-62 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
+2018-10-26 12:06:54,692 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-62 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script from play_evolutions order by id;
+2018-10-26 12:06:54,695 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-62 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 17: play.crypto.secret is deprecated, use play.http.secret.key instead
+2018-10-26 12:06:54,750 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-62 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+    play.filters.csrf.CSRFFilter
+
+2018-10-26 12:06:54,750 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-62 - Application started (Dev)
+2018-10-26 12:06:54,836 [INFO] from application in application-akka.actor.default-dispatcher-3 - Calling action for Hello
+2018-10-26 12:06:54,841 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-8 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 12:06:54,849 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - insert into user (user_name, password) values ('09870087','1234');
+2018-10-26 12:06:54,855 [ERROR] from application in application-akka.actor.default-dispatcher-6 - 
+
+! @79kn6jc63 - Internal server error, for (POST) [/tambah_dosen?csrfToken=58e2fb90fbaa01149969050979a5bbb573cb7938-1540529813792-1aa95b7fce0f8332c3d13420] ->
+ 
+play.api.http.HttpErrorHandlerExceptions$$anon$1: Execution exception[[CompletionException: java.lang.NullPointerException]]
+	at play.api.http.HttpErrorHandlerExceptions$.throwableToUsefulException(HttpErrorHandler.scala:251)
+	at play.api.http.DefaultHttpErrorHandler.onServerError(HttpErrorHandler.scala:178)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:363)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:361)
+	at scala.concurrent.Future.$anonfun$recoverWith$1(Future.scala:414)
+	at scala.concurrent.impl.Promise.$anonfun$transformWith$1(Promise.scala:37)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:60)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:91)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:81)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:91)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:43)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.util.concurrent.CompletionException: java.lang.NullPointerException
+	at java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:273)
+	at java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:280)
+	at java.util.concurrent.CompletableFuture.uniCompose(CompletableFuture.java:961)
+	at java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:926)
+	at java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:442)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:56)
+	... 6 common frames omitted
+Caused by: java.lang.NullPointerException: null
+	at controllers.DosenController.tambahDosen(DosenController.java:53)
+	at router.Routes$$anonfun$routes$1.$anonfun$applyOrElse$28(Routes.scala:601)
+	at play.core.routing.HandlerInvokerFactory$$anon$3.resultCall(HandlerInvoker.scala:134)
+	at play.core.routing.HandlerInvokerFactory$$anon$3.resultCall(HandlerInvoker.scala:133)
+	at play.core.routing.HandlerInvokerFactory$JavaActionInvokerFactory$$anon$8$$anon$2$$anon$1.invocation(HandlerInvoker.scala:108)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:88)
+	at play.http.DefaultActionCreator$1.call(DefaultActionCreator.java:31)
+	at be.objectify.deadbolt.java.actions.AbstractDeadboltAction.authorizeAndExecute(AbstractDeadboltAction.java:301)
+	at be.objectify.deadbolt.java.ConstraintLogic.pass(ConstraintLogic.java:402)
+	at be.objectify.deadbolt.java.ConstraintLogic.lambda$restrict$6(ConstraintLogic.java:153)
+	at java.util.concurrent.CompletableFuture.uniCompose(CompletableFuture.java:952)
+	... 9 common frames omitted
+2018-10-26 12:07:00,964 [INFO] from application in application-akka.actor.default-dispatcher-3 - Calling action for Hello
+2018-10-26 12:07:00,968 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-7 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 12:07:05,334 [INFO] from application in application-akka.actor.default-dispatcher-7 - Calling action for Hello
+2018-10-26 12:07:05,336 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-3 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 12:07:05,340 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-3 - insert into user (user_name, password) values ('09870087','1234');
+2018-10-26 12:07:05,346 [ERROR] from application in application-akka.actor.default-dispatcher-3 - 
+
+! @79kn6k1jg - Internal server error, for (POST) [/tambah_dosen?csrfToken=443e94ad39842f39ef3c1ed51c02c0cc996086bf-1540530420963-1aa95b7fce0f8332c3d13420] ->
+ 
+play.api.http.HttpErrorHandlerExceptions$$anon$1: Execution exception[[CompletionException: java.lang.NullPointerException]]
+	at play.api.http.HttpErrorHandlerExceptions$.throwableToUsefulException(HttpErrorHandler.scala:251)
+	at play.api.http.DefaultHttpErrorHandler.onServerError(HttpErrorHandler.scala:178)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:363)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:361)
+	at scala.concurrent.Future.$anonfun$recoverWith$1(Future.scala:414)
+	at scala.concurrent.impl.Promise.$anonfun$transformWith$1(Promise.scala:37)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:60)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:91)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:81)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:91)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:43)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.util.concurrent.CompletionException: java.lang.NullPointerException
+	at java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:273)
+	at java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:280)
+	at java.util.concurrent.CompletableFuture.uniCompose(CompletableFuture.java:961)
+	at java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:926)
+	at java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:442)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:56)
+	... 6 common frames omitted
+Caused by: java.lang.NullPointerException: null
+	at controllers.DosenController.tambahDosen(DosenController.java:53)
+	at router.Routes$$anonfun$routes$1.$anonfun$applyOrElse$28(Routes.scala:601)
+	at play.core.routing.HandlerInvokerFactory$$anon$3.resultCall(HandlerInvoker.scala:134)
+	at play.core.routing.HandlerInvokerFactory$$anon$3.resultCall(HandlerInvoker.scala:133)
+	at play.core.routing.HandlerInvokerFactory$JavaActionInvokerFactory$$anon$8$$anon$2$$anon$1.invocation(HandlerInvoker.scala:108)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:88)
+	at play.http.DefaultActionCreator$1.call(DefaultActionCreator.java:31)
+	at be.objectify.deadbolt.java.actions.AbstractDeadboltAction.authorizeAndExecute(AbstractDeadboltAction.java:301)
+	at be.objectify.deadbolt.java.ConstraintLogic.pass(ConstraintLogic.java:402)
+	at be.objectify.deadbolt.java.ConstraintLogic.lambda$restrict$6(ConstraintLogic.java:153)
+	at java.util.concurrent.CompletableFuture.uniCompose(CompletableFuture.java:952)
+	... 9 common frames omitted
+2018-10-26 13:06:13,662 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-70 - Shutting down connection pool.
+2018-10-26 13:06:13,956 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-70 - Database [default] initialized at jdbc:mysql://localhost/WebDasar?characterEncoding=UTF-8
+2018-10-26 13:06:13,957 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-70 - Creating Pool for datasource 'default'
+2018-10-26 13:06:14,148 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-70 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
+2018-10-26 13:06:14,150 [INFO] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-70 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script from play_evolutions order by id;
+2018-10-26 13:06:14,153 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-70 - application.conf @ file:/home/patrick/workspace/helloworld/helloworld/target/scala-2.12/classes/application.conf: 17: play.crypto.secret is deprecated, use play.http.secret.key instead
+2018-10-26 13:06:14,171 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-70 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+    play.filters.csrf.CSRFFilter
+
+2018-10-26 13:06:14,171 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-70 - Application started (Dev)
+2018-10-26 13:06:14,212 [INFO] from application in application-akka.actor.default-dispatcher-7 - Calling action for Hello
+2018-10-26 13:06:14,219 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-7 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 13:06:14,226 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - insert into user (user_name, password) values ('09870087','1234');
+2018-10-26 13:06:14,229 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-6 - insert into dosen (nim_dosen, name, user_id) values (9870087,'Mutia Qana''a',7);
+2018-10-26 13:06:14,284 [INFO] from application in application-akka.actor.default-dispatcher-7 - Calling action for Hello
+2018-10-26 13:06:14,286 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-4 - select t0.id, t0.user_name, t0.password, t1.id, t1.name from user t0 left join user_security_role t1z_ on t1z_.user_id = t0.id  left join security_role t1 on t1.id = t1z_.security_role_id  where t0.user_name = 'Hello'  order by t0.id;
+2018-10-26 13:06:14,288 [INFO] from org.jdbcdslog.StatementLogger in application-akka.actor.default-dispatcher-4 - select t0.nim_dosen, t0.name, t0.user_id from dosen t0;

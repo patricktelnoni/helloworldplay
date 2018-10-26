@@ -1,0 +1,11 @@
+@(asprakForm: Form[Asprak])
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/stylesheets/bootstrap.css")">
+@import helper._
+    @laboran.menu.render()
+@helper.form(CSRF(routes.HomeController.tambahAsprak())){
+    @helper.inputText(asprakForm("Nim"), 'id -> "email", 'size -> 30)
+    @helper.inputText(asprakForm("Nama"))
+    <input type="submit" value="Tambah Asprak" />
+}
+
+

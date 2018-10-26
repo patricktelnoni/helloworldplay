@@ -19,6 +19,13 @@ GET     /edit_dosen/:id             controllers.DosenController.editDosen(id: Lo
 POST    /update_dosen/:id           controllers.DosenController.updateDosen(id: Long)
 POST    /hapus_dosen/:id            controllers.DosenController.hapusDosen(id: Long)
 POST    /tambah_dosen               controllers.DosenController.tambahDosen
+#Modul
+GET     /list_modul                 controllers.ModulController.index
+GET     /form_modul                 controllers.ModulController.formModul
+GET     /edit_modul/:id             controllers.ModulController.editModul(id: Long)
+POST    /update_modul/:id           controllers.ModulController.updateModul(id: Long)
+POST    /hapus_modul/:id            controllers.ModulController.hapusModul(id: Long)
+POST    /tambah_modul               controllers.ModulController.tambahModul
 
 POST    /do_login                   controllers.FreeController.doLogin
 GET    /cek_login                   controllers.FreeController.cekLogin

@@ -17,9 +17,15 @@ public class Dosen extends Model {
 
     @OneToOne
     @JoinColumn(name="user_id")
-    AuthorisedUser authorisedUser;
+    public AuthorisedUser authorisedUser;
 
     public static final Finder<Long, Dosen> find = new Finder<>(Dosen.class);
 
+    public void setAuthorisedUser(AuthorisedUser authorisedUser) {
+        this.authorisedUser = authorisedUser;
+    }
 
+    public AuthorisedUser getAuthorisedUser() {
+        return authorisedUser;
+    }
 }

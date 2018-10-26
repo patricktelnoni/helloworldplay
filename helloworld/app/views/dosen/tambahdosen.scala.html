@@ -5,6 +5,7 @@
 @helper.form(CSRF(routes.DosenController.tambahDosen())){
     @helper.inputText(dosenForm("Nim"), 'id -> "email", 'size -> 30)
     @helper.inputText(dosenForm("Nama"))
+    @helper.inputPassword(dosenForm("Password"))
     <input type="submit" value="Tambah Asprak" />
 }
 

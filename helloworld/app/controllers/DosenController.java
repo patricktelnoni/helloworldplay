@@ -4,6 +4,8 @@ import be.objectify.deadbolt.java.actions.Group;
 import be.objectify.deadbolt.java.actions.Restrict;
 
 
+import models.AuthorisedUser;
+import models.User;
 import play.mvc.*;
 import play.data.*;
 import models.Dosen;
@@ -16,6 +18,10 @@ import javax.inject.*;
 @Restrict({@Group("Laboran")})
 public class DosenController extends Controller{
     @Inject FormFactory formFactory;
+
+    public static Result index() {
+        return Results.TODO;
+    }
 
 
     public Result daftarDosen(){
@@ -35,10 +41,16 @@ public class DosenController extends Controller{
 
     public Result tambahDosen(){
         DynamicForm  requestData    = formFactory.form().bindFromRequest();
-        Dosen Dosen                 = new Dosen();
-        Dosen.nim_dosen             = Long.parseLong(requestData.get("Nim"));
-        Dosen.name                  = requestData.get("Nama");
-        Dosen.save();
+        Dosen dosen                 = new Dosen();
+        AuthorisedUser user         = new AuthorisedUser();
+        user.userName               = requestData.get("Nim");
+        user.password               = requestData.get("Password");
+        user.save();
+
+        dosen.nim_dosen             = Long.parseLong(requestData.get("Nim"));
+        dosen.name                  = requestData.get("Nama");
+        dosen.setAuthorisedUser(user);
+        dosen.save();
         return redirect(routes.DosenController.daftarDosen());
 
     }

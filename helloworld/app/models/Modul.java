@@ -18,10 +18,13 @@ public class Modul extends Model {
     public String nama_modul;
 
     @Column(columnDefinition = "TEXT")
-    private String jurnal;
+    public String tp;
+
+    @Column(columnDefinition = "TEXT")
+    public String jurnal;
     
     @Column(columnDefinition = "TEXT")
-    private String tugas_akhir;
+    public String tugas_akhir;
 
     @Formats.DateTime(pattern="dd/MM/yyyy")
     public Date deadline = new Date();
