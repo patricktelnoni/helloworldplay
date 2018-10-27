@@ -2,16 +2,16 @@ package controllers;
 
 import be.objectify.deadbolt.java.actions.Group;
 import be.objectify.deadbolt.java.actions.Restrict;
-
-
 import models.AuthorisedUser;
-import models.User;
+import models.SecurityRole;
 import play.mvc.*;
 import play.data.*;
 import models.Dosen;
-
-
 import javax.inject.*;
+import java.util.ArrayList;
+import java.util.List;
+import org.mindrot.jbcrypt.*;
+
 
 
 @With(Base.class)
@@ -43,9 +43,23 @@ public class DosenController extends Controller{
         DynamicForm  requestData    = formFactory.form().bindFromRequest();
         Dosen dosen                 = new Dosen();
         AuthorisedUser user         = new AuthorisedUser();
+        SecurityRole securityRole   = new SecurityRole();
+
+        List<SecurityRole> roleuser = new ArrayList<SecurityRole>();
+
+
+        roleuser.add(securityRole.findByName("Dosen"));
         user.userName               = requestData.get("Nim");
-        user.password               = requestData.get("Password");
+        String hashed               = BCrypt.hashpw(requestData.get("Password"), BCrypt.gensalt());
+        user.password               = hashed;
+
+
+
+        user.setRoles(roleuser);
+
         user.save();
+
+
 
         dosen.nim_dosen             = Long.parseLong(requestData.get("Nim"));
         dosen.name                  = requestData.get("Nama");

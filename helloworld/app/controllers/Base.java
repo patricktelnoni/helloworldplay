@@ -1,7 +1,9 @@
 package controllers;
 
+import models.AuthorisedUser;
+import models.Dosen;
 import play.mvc.*;
-import play.Logger;
+
 import play.data.*;
 import play.libs.concurrent.HttpExecutionContext;
 import java.util.concurrent.CompletableFuture;
@@ -13,13 +15,14 @@ import views.html.restricted;
 
 public class Base extends Action.Simple{
    
-    @Inject FormFactory formFactory;
-    @Inject HttpExecutionContext ec;   
+
+    @Inject HttpExecutionContext ec;
+    private String userid;
     
     @Override
     public CompletionStage<Result> call(Http.Context ctx) {
         String connected = ctx.session().get("email");
-        Logger.info("Calling action for {}", connected);
+        this.userid = ctx.session().get("userid");
         if(connected == null)
             return CompletableFuture.supplyAsync(() -> checkLogin(connected))
                                 .thenApplyAsync(user -> ok(restricted.render(user)),
@@ -33,5 +36,8 @@ public class Base extends Action.Simple{
 
         return false;
     }
+
+
+
 
 }

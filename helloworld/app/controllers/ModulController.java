@@ -9,7 +9,7 @@ import play.mvc.Result;
 
 import play.mvc.With;
 
-@With(Base.class)
+
 @Restrict({@Group("Dosen")})
 public class ModulController extends Controller {
 

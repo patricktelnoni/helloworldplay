@@ -16,13 +16,13 @@
 package models;
 
 import be.objectify.deadbolt.java.models.Role;
-import java.util.*;
+
 import javax.persistence.*;
 
 
 import io.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
+
+import java.util.List;
 
 @Entity
 public class SecurityRole extends Model implements Role
@@ -32,18 +32,28 @@ public class SecurityRole extends Model implements Role
 
     public String name;
 
+    @ManyToMany
+    public List<AuthorisedUser> users;
+
     public static final Finder<Long, SecurityRole> find = new Finder<>(SecurityRole.class);
+
+
+    public void setUsers(List<AuthorisedUser> users) {
+        this.users = users;
+    }
 
     public String getName()
     {
         return name;
     }
 
-    public static SecurityRole findByName(String name)
-    {
-        return find.query().where()
-                   .eq("name",
-                       name)
-                   .findOne();
+    public void setName(String name) {
+        this.name = name;
     }
+
+    public SecurityRole findByName(String role){
+        return find.query().where().eq("name", role).findOne();
+
+    }
+
 }

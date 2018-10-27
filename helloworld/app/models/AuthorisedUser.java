@@ -6,12 +6,8 @@ import be.objectify.deadbolt.java.models.Subject;
 import java.util.*;
 import javax.persistence.*;
 import io.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
 
-/**
- * @author Steve Chaloner (steve@objectify.be)
- */
+
 @Entity
 @Table(name = "user")
 public class AuthorisedUser extends Model implements Subject
@@ -48,6 +44,12 @@ public class AuthorisedUser extends Model implements Subject
     {
         return userName;
     }
+
+    public void setRoles(List roles) {
+        this.roles = roles;
+    }
+
+
 
     public static AuthorisedUser findByUserName(String userName)
     {

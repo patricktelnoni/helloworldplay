@@ -99,6 +99,12 @@ create table security_role (
   constraint pk_security_role primary key (id)
 );
 
+create table security_role_user (
+  security_role_id              bigint not null,
+  user_id                       bigint not null,
+  constraint pk_security_role_user primary key (security_role_id,user_id)
+);
+
 create table aksesuser (
   id                            bigint auto_increment not null,
   permission_value              varchar(255),
@@ -148,6 +154,12 @@ create index ix_praktikum_ploting_asprak_id_plotting on praktikum (ploting_aspra
 alter table praktikum add constraint fk_praktikum_kelas_id_kelas foreign key (kelas_id_kelas) references kelas (id_kelas) on delete restrict on update restrict;
 create index ix_praktikum_kelas_id_kelas on praktikum (kelas_id_kelas);
 
+alter table security_role_user add constraint fk_security_role_user_security_role foreign key (security_role_id) references security_role (id) on delete restrict on update restrict;
+create index ix_security_role_user_security_role on security_role_user (security_role_id);
+
+alter table security_role_user add constraint fk_security_role_user_user foreign key (user_id) references user (id) on delete restrict on update restrict;
+create index ix_security_role_user_user on security_role_user (user_id);
+
 
 # --- !Downs
 
@@ -186,6 +198,12 @@ drop index ix_praktikum_ploting_asprak_id_plotting on praktikum;
 alter table praktikum drop foreign key fk_praktikum_kelas_id_kelas;
 drop index ix_praktikum_kelas_id_kelas on praktikum;
 
+alter table security_role_user drop foreign key fk_security_role_user_security_role;
+drop index ix_security_role_user_security_role on security_role_user;
+
+alter table security_role_user drop foreign key fk_security_role_user_user;
+drop index ix_security_role_user_user on security_role_user;
+
 drop table if exists asprak;
 
 drop table if exists user;
@@ -209,6 +227,8 @@ drop table if exists praktikan;
 drop table if exists praktikum;
 
 drop table if exists security_role;
+
+drop table if exists security_role_user;
 
 drop table if exists aksesuser;
 

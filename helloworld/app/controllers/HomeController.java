@@ -2,6 +2,7 @@ package controllers;
 
 import be.objectify.deadbolt.java.actions.Group;
 import be.objectify.deadbolt.java.actions.Restrict;
+import be.objectify.deadbolt.java.actions.SubjectPresent;
 import models.*;
 import forms.*;
 import play.libs.Json;
@@ -11,7 +12,7 @@ import javax.inject.*;
 
 
 
-@With(Base.class)
+@SubjectPresent
 @Restrict({@Group("Laboran")})
 public class HomeController extends Controller{ 
     @Inject FormFactory formFactory;    

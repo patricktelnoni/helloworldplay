@@ -28,6 +28,8 @@ POST    /hapus_modul/:id            controllers.ModulController.hapusModul(id: L
 POST    /tambah_modul               controllers.ModulController.tambahModul
 
 POST    /do_login                   controllers.FreeController.doLogin
+POST    /do_change_password         controllers.UserController.doChangePassword
+GET    /change_password             controllers.UserController.changePassword
 GET    /cek_login                   controllers.FreeController.cekLogin
 GET    /logout                      controllers.FreeController.logout
 

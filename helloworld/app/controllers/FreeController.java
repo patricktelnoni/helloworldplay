@@ -3,11 +3,13 @@ package controllers;
 import models.*;
 import forms.*;
 
+import play.Logger;
 import play.mvc.*;
 import play.data.*;
 
 import javax.inject.*;
-import java.util.List;
+import org.mindrot.jbcrypt.*;
+
 
 
 public class FreeController extends Controller{
@@ -39,12 +41,18 @@ public class FreeController extends Controller{
         DynamicForm  requestData = formFactory.form().bindFromRequest();
         AuthorisedUser as= AuthorisedUser.findByUserName(requestData.get("nim"));
         //return (Result) ok(as.permissions.get(0).value);
-        if(as.password.equals(requestData.get("password"))){
+        Logger.info("BCrypt Check password", String.valueOf(as.password));
+        if(BCrypt.checkpw(requestData.get("password"), as.password)){
+//if(as.password.equals(requestData.get("password"))){
+            session("userid", String.valueOf(as.id));
             session("email", requestData.get("nim"));
             session("akses", as.roles.get(0).getName());
             session("loggedin", String.valueOf(true));
         }
-        return redirect(routes.HomeController.daftarAsprak());
+        if(as.roles.get(0).getName().equals("Dosen"))
+            return redirect(routes.ModulController.index());
+        else
+            return redirect(routes.HomeController.daftarAsprak());
 
     }
 
