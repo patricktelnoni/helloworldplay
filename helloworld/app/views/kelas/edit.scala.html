@@ -1,0 +1,21 @@
+
+@(id:Long, filledForm: Form[Kelas])
+
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/css/bootstrap.css")">
+@import helper._
+@laboran.menu.render()
+
+
+@helper.form(CSRF(routes.KelasController.update(id)),
+    args = 'class -> "text-left col-sm-4", 'style -> "margin-left:10%;"){
+    <div class="form-group">
+        @helper.inputText(filledForm("nama_kelas"),
+                            '_label -> "Nama Kelas",
+                            'size -> 30,
+                            'class -> "form-control")
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Asprak</button>
+
+
+}

@@ -56,6 +56,19 @@ create table laboran (
   constraint pk_laboran primary key (id_laboran)
 );
 
+create table matakuliah (
+  id_matakuliah                 bigint auto_increment not null,
+  nama_matakuliah               varchar(255),
+  sks                           varchar(255),
+  constraint pk_matakuliah primary key (id_matakuliah)
+);
+
+create table matakuliah_praktikum (
+  matakuliah_id_matakuliah      bigint not null,
+  praktikum_idpraktikum         bigint not null,
+  constraint pk_matakuliah_praktikum primary key (matakuliah_id_matakuliah,praktikum_idpraktikum)
+);
+
 create table modul (
   id_modul                      bigint auto_increment not null,
   nama_modul                    varchar(255),
@@ -68,6 +81,7 @@ create table modul (
 
 create table ploting_asprak (
   id_plotting                   bigint auto_increment not null,
+  mata_kuliah_id_matakuliah     bigint not null,
   name                          varchar(255),
   asprak_nim_asprak             bigint,
   kelas_id_kelas                bigint,
@@ -76,6 +90,7 @@ create table ploting_asprak (
 
 create table praktikan (
   nim_praktikan                 bigint auto_increment not null,
+  mata_kuliah_id_matakuliah     bigint not null,
   name                          varchar(255),
   kelas_id_kelas                bigint,
   authorised_user_id            bigint,
@@ -137,11 +152,23 @@ alter table dosen add constraint fk_dosen_user_id foreign key (user_id) referenc
 
 alter table laboran add constraint fk_laboran_user_id foreign key (user_id) references user (id) on delete restrict on update restrict;
 
+alter table matakuliah_praktikum add constraint fk_matakuliah_praktikum_matakuliah foreign key (matakuliah_id_matakuliah) references matakuliah (id_matakuliah) on delete restrict on update restrict;
+create index ix_matakuliah_praktikum_matakuliah on matakuliah_praktikum (matakuliah_id_matakuliah);
+
+alter table matakuliah_praktikum add constraint fk_matakuliah_praktikum_praktikum foreign key (praktikum_idpraktikum) references praktikum (idpraktikum) on delete restrict on update restrict;
+create index ix_matakuliah_praktikum_praktikum on matakuliah_praktikum (praktikum_idpraktikum);
+
+alter table ploting_asprak add constraint fk_ploting_asprak_mata_kuliah_id_matakuliah foreign key (mata_kuliah_id_matakuliah) references matakuliah (id_matakuliah) on delete restrict on update restrict;
+create index ix_ploting_asprak_mata_kuliah_id_matakuliah on ploting_asprak (mata_kuliah_id_matakuliah);
+
 alter table ploting_asprak add constraint fk_ploting_asprak_asprak_nim_asprak foreign key (asprak_nim_asprak) references asprak (nim_asprak) on delete restrict on update restrict;
 create index ix_ploting_asprak_asprak_nim_asprak on ploting_asprak (asprak_nim_asprak);
 
 alter table ploting_asprak add constraint fk_ploting_asprak_kelas_id_kelas foreign key (kelas_id_kelas) references kelas (id_kelas) on delete restrict on update restrict;
 create index ix_ploting_asprak_kelas_id_kelas on ploting_asprak (kelas_id_kelas);
+
+alter table praktikan add constraint fk_praktikan_mata_kuliah_id_matakuliah foreign key (mata_kuliah_id_matakuliah) references matakuliah (id_matakuliah) on delete restrict on update restrict;
+create index ix_praktikan_mata_kuliah_id_matakuliah on praktikan (mata_kuliah_id_matakuliah);
 
 alter table praktikan add constraint fk_praktikan_kelas_id_kelas foreign key (kelas_id_kelas) references kelas (id_kelas) on delete restrict on update restrict;
 create index ix_praktikan_kelas_id_kelas on praktikan (kelas_id_kelas);
@@ -181,11 +208,23 @@ alter table dosen drop foreign key fk_dosen_user_id;
 
 alter table laboran drop foreign key fk_laboran_user_id;
 
+alter table matakuliah_praktikum drop foreign key fk_matakuliah_praktikum_matakuliah;
+drop index ix_matakuliah_praktikum_matakuliah on matakuliah_praktikum;
+
+alter table matakuliah_praktikum drop foreign key fk_matakuliah_praktikum_praktikum;
+drop index ix_matakuliah_praktikum_praktikum on matakuliah_praktikum;
+
+alter table ploting_asprak drop foreign key fk_ploting_asprak_mata_kuliah_id_matakuliah;
+drop index ix_ploting_asprak_mata_kuliah_id_matakuliah on ploting_asprak;
+
 alter table ploting_asprak drop foreign key fk_ploting_asprak_asprak_nim_asprak;
 drop index ix_ploting_asprak_asprak_nim_asprak on ploting_asprak;
 
 alter table ploting_asprak drop foreign key fk_ploting_asprak_kelas_id_kelas;
 drop index ix_ploting_asprak_kelas_id_kelas on ploting_asprak;
+
+alter table praktikan drop foreign key fk_praktikan_mata_kuliah_id_matakuliah;
+drop index ix_praktikan_mata_kuliah_id_matakuliah on praktikan;
 
 alter table praktikan drop foreign key fk_praktikan_kelas_id_kelas;
 drop index ix_praktikan_kelas_id_kelas on praktikan;
@@ -217,6 +256,10 @@ drop table if exists dosen;
 drop table if exists kelas;
 
 drop table if exists laboran;
+
+drop table if exists matakuliah;
+
+drop table if exists matakuliah_praktikum;
 
 drop table if exists modul;
 

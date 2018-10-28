@@ -2,6 +2,7 @@ package controllers;
 
 import be.objectify.deadbolt.java.actions.Group;
 import be.objectify.deadbolt.java.actions.Restrict;
+
 import models.AuthorisedUser;
 import models.SecurityRole;
 import play.mvc.*;
@@ -14,10 +15,13 @@ import org.mindrot.jbcrypt.*;
 
 
 
-@With(Base.class)
+
 @Restrict({@Group("Laboran")})
 public class DosenController extends Controller{
     @Inject FormFactory formFactory;
+    @Inject Dosen dosen;
+    @Inject AuthorisedUser user;
+    @Inject SecurityRole securityRole;
 
     public static Result index() {
         return Results.TODO;
@@ -33,7 +37,6 @@ public class DosenController extends Controller{
     }
 
     public Result formDosen(){
-
         Form<Dosen> DosenForm = formFactory.form(Dosen.class);
         return ok(views.html.dosen.tambahdosen.render(DosenForm));
 
@@ -41,25 +44,14 @@ public class DosenController extends Controller{
 
     public Result tambahDosen(){
         DynamicForm  requestData    = formFactory.form().bindFromRequest();
-        Dosen dosen                 = new Dosen();
-        AuthorisedUser user         = new AuthorisedUser();
-        SecurityRole securityRole   = new SecurityRole();
-
         List<SecurityRole> roleuser = new ArrayList<SecurityRole>();
-
-
         roleuser.add(securityRole.findByName("Dosen"));
         user.userName               = requestData.get("Nim");
         String hashed               = BCrypt.hashpw(requestData.get("Password"), BCrypt.gensalt());
         user.password               = hashed;
 
-
-
         user.setRoles(roleuser);
-
         user.save();
-
-
 
         dosen.nim_dosen             = Long.parseLong(requestData.get("Nim"));
         dosen.name                  = requestData.get("Nama");
@@ -70,14 +62,13 @@ public class DosenController extends Controller{
     }
 
     public Result hapusDosen(Long id){
-        Dosen.find.ref(id).delete();
+        dosen.find.ref(id).delete();
         return redirect(routes.DosenController.daftarDosen());
     }
 
     public Result editDosen(Long id){
-        Dosen dosen                   = Dosen.find.byId(id);
         Form<Dosen> DosenForm         = formFactory.form(Dosen.class);
-        Form<Dosen> filledDosenForm   = DosenForm.fill(dosen);
+        Form<Dosen> filledDosenForm   = DosenForm.fill(dosen.find.byId(id));
         return ok(
                 views.html.dosen.editdosen.render(id, filledDosenForm)
         );
@@ -85,7 +76,6 @@ public class DosenController extends Controller{
 
     public Result updateDosen(Long id){
         DynamicForm  requestData = formFactory.form().bindFromRequest();
-        Dosen dosen       = new Dosen();
         dosen.nim_dosen   = Long.parseLong(requestData.get("Nim_dosen"));
         dosen.name        = requestData.get("Name");
 

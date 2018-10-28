@@ -1,0 +1,40 @@
+@(list: List[Kelas])
+
+@import helper._
+@laboran.menu.render()
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/javascripts/jquery.js")">
+
+@main("Daftar Kelas") {
+    
+    <h1>@list.size() Kelas</h1>
+    <table class="table table-striped table-bordered table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">Id Kelas</th>
+            <th scope="col">Nama Kelas</th>
+
+          </tr>
+        </thead>
+        <tbody>
+        
+       
+        @for(data <- list) {
+            <tr>
+                <td scope="row">@data.id_kelas</td>
+                <td>@data.nama_kelas</td>
+
+                <td>
+                    <a class="btn btn-warning" href="@routes.KelasController.edit(data.id_kelas)">Edit</a>
+                    |<a class="btn btn-danger" href="@routes.KelasController.hapus(data.id_kelas)">Hapus</a></td>
+                
+                
+            </tr>
+        }
+        </tbody>
+    </table>
+
+
+    <a href="@routes.KelasController.form">Tambah Kelas</a>
+    
+    
+}

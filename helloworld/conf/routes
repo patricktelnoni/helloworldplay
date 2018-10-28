@@ -26,6 +26,13 @@ GET     /edit_modul/:id             controllers.ModulController.editModul(id: Lo
 POST    /update_modul/:id           controllers.ModulController.updateModul(id: Long)
 POST    /hapus_modul/:id            controllers.ModulController.hapusModul(id: Long)
 POST    /tambah_modul               controllers.ModulController.tambahModul
+#Kelas
+GET     /list_kelas                 controllers.KelasController.index
+GET     /form_kelas                 controllers.KelasController.form
+GET     /edit_kelas/:id             controllers.KelasController.edit(id: Long)
+POST    /update_kelas/:id           controllers.KelasController.update(id: Long)
+GET    /hapus_kelas/:id            controllers.KelasController.hapus(id: Long)
+POST    /tambah_kelas               controllers.KelasController.tambah
 
 POST    /do_login                   controllers.FreeController.doLogin
 POST    /do_change_password         controllers.UserController.doChangePassword
