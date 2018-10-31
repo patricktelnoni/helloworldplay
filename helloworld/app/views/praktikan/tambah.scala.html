@@ -1,0 +1,11 @@
+@(formData: Form[Matakuliah])
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/stylesheets/bootstrap.css")">
+@import helper._
+@index.render()
+@helper.form(CSRF(routes.MataKuliahController.tambah())){
+    @helper.inputText(formData("kode_matakuliah"), '_label -> "Kode Mata Kuliah")
+    @helper.inputText(formData("nama_matakuliah"), '_label -> "Nama Mata Kuliah")
+    <input type="submit" value="Tambah Mata Kuliah" />
+}
+
+

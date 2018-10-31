@@ -4,7 +4,7 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.FreeController.index
-GET     /home                       controllers.FreeController.dashboard
+#GET     /home                       controllers.FreeController.dashboard
 #Asprak
 GET     /list_asprak                controllers.HomeController.daftarAsprak
 GET     /form_asprak                controllers.HomeController.formAsprak
@@ -31,8 +31,25 @@ GET     /list_kelas                 controllers.KelasController.index
 GET     /form_kelas                 controllers.KelasController.form
 GET     /edit_kelas/:id             controllers.KelasController.edit(id: Long)
 POST    /update_kelas/:id           controllers.KelasController.update(id: Long)
-GET    /hapus_kelas/:id            controllers.KelasController.hapus(id: Long)
+GET     /hapus_kelas/:id            controllers.KelasController.hapus(id: Long)
 POST    /tambah_kelas               controllers.KelasController.tambah
+#Mata Kuliah
+GET     /list_matakuliah            controllers.MataKuliahController.index
+GET     /form_matakuliah            controllers.MataKuliahController.form
+GET     /edit_matakuliah/:id        controllers.MataKuliahController.edit(id: Long)
+POST    /update_matakuliah/:id      controllers.MataKuliahController.update(id: Long)
+GET    /hapus_matakuliah/:id        controllers.MataKuliahController.hapus(id: Long)
+POST    /tambah_matakuliah          controllers.MataKuliahController.tambah
+#Soal
+GET     /list_soal                  controllers.SoalController.index
+
+#Praktikan
+GET     /list_praktikan             controllers.PraktikanController.index
+GET     /form_praktikan             controllers.PraktikanController.form
+GET     /edit_praktikan/:id         controllers.PraktikanController.edit(id: Long)
+POST    /update_praktikan/:id       controllers.PraktikanController.update(id: Long)
+GET     /hapus_praktikan/:id        controllers.PraktikanController.hapus(id: Long)
+POST    /tambah_praktikan           controllers.PraktikanController.tambah
 
 POST    /do_login                   controllers.FreeController.doLogin
 POST    /do_change_password         controllers.UserController.doChangePassword

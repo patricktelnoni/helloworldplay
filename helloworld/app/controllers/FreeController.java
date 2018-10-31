@@ -25,16 +25,29 @@ public class FreeController extends Controller{
     }
     public Result index() {
         Form<LoginForm> loginForm = formFactory.form(LoginForm.class);
-        //Object user = ctx().args.get("user");        
-        return ok(views.html.user.render(loginForm));
+        //Object user = ctx().args.get("user");
+        String akses = session("akses");
+        if(akses == null)
+            return ok(views.html.user.render(loginForm));
+        else{
+            if(akses == "Dosen")
+                return redirect(routes.ModulController.index());
+            else if(akses== "Laboran")
+                return redirect(routes.HomeController.daftarAsprak());
+            else if(akses == "Praktikan")
+                return redirect(routes.SoalController.index());
+            else
+                return redirect(routes.ModulController.index());
+
+        }
         
         //return ok(Json.toJson(user));
     }
 
-    public Result dashboard() {
-        Form<LoginForm> loginForm = formFactory.form(LoginForm.class);
-        return ok(views.html.index.render(loginForm));
-    }
+//    public Result dashboard() {
+//        Form<LoginForm> loginForm = formFactory.form(LoginForm.class);
+//        return ok(views.html.index.render(loginForm));
+//    }
 
     
     public Result doLogin(){        
@@ -43,7 +56,6 @@ public class FreeController extends Controller{
         //return (Result) ok(as.permissions.get(0).value);
         Logger.info("BCrypt Check password", String.valueOf(as.password));
         if(BCrypt.checkpw(requestData.get("password"), as.password)){
-//if(as.password.equals(requestData.get("password"))){
             session("userid", String.valueOf(as.id));
             session("email", requestData.get("nim"));
             session("akses", as.roles.get(0).getName());

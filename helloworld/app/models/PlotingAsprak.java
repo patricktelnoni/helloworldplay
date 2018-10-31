@@ -26,5 +26,8 @@ public class PlotingAsprak extends Model {
     @ManyToOne
     Kelas kelas;
 
+    @ManyToOne
+    Matakuliah matakuliah;
+
     public static final Finder<Long, PlotingAsprak> find = new Finder<>(PlotingAsprak.class);
 }

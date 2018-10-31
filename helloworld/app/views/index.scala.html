@@ -1,15 +1,18 @@
-@(loginForm: Form[forms.LoginForm])
+
+
 @{
-    if(session.get("akses") == "dosen")
+    if(session.get("akses") == "Dosen")
         dosen.menu.render()
-    else if(session.get("akses") == "laboran")
+    else if(session.get("akses") == "Laboran")
         laboran.menu.render()
-    else if(session.get("akses") == "praktikan")
+    else if(session.get("akses") == "Praktikan")
         praktikan.menu.render()
-    else if(session.get("akses") == "asprak")
+        else if (session.get("akses") == "Asprak")
         asprak.menu.render()
     else
-        user.render(loginForm)
+        loginpage.render()
+
+
 
 }
 

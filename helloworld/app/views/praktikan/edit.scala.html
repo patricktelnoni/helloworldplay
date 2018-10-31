@@ -1,27 +1,27 @@
 
-@(id:Long, filledDosenForm: Form[Dosen])
+@(id:Long, filledForm: Form[Matakuliah])
 
 <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/css/bootstrap.css")">
 @import helper._
 @index.render()
 
-@helper.form(CSRF(routes.DosenController.updateDosen(id)),
+
+@helper.form(CSRF(routes.MataKuliahController.update(id)),
     args = 'class -> "text-left col-sm-4", 'style -> "margin-left:10%;"){
     <div class="form-group">
-        @helper.inputText(filledDosenForm("Nim_dosen"),
-                            '_label -> "Nim", 
-                            'name->"nim", 
+        @helper.inputText(filledForm("kode_matakuliah"),
+                            '_label -> "Kode Mata Kuliah",
                             'size -> 30,
                             'class -> "form-control")
     </div>
     <div class="form-group">
-        @helper.inputText(filledDosenForm("Name"),
-                            '_label -> "Nama", 
-                            'name->"nama", 
+        @helper.inputText(filledForm("nama_matakuliah"),
+                            '_label -> "Nama Mata Kuliah",
                             'size -> 30,
                             'class -> "form-control")
     </div>
-    <button type="submit" class="btn btn-primary">Update Dosen</button>
+
+    <button type="submit" class="btn btn-primary">Update Mata Kuliah</button>
 
 
 }

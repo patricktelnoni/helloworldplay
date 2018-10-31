@@ -1,9 +1,26 @@
+
+
 @(loginForm: Form[forms.LoginForm])
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.css")">
 @import helper._
-@helper.form(CSRF(routes.FreeController.doLogin())){
-    @helper.inputText(loginForm("nim"), 'id -> "nim", 'size -> 30)
-    @helper.inputPassword(loginForm("password"))
-    <input type="submit" value="Login" />
+@main("Selamat datang"){
+    @helper.form(CSRF(routes.FreeController.doLogin()),
+                'class -> "form-horizontal"){
+        <div class="col-sm-10">
+            @helper.inputText(loginForm("nim"), 'id -> "nim", 'size -> 30)
+        </div>
+        <div class="col-sm-10">
+            @helper.inputPassword(loginForm("password"), 'size -> 30)
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Login</button>
+            </div>
+        </div>
+    }
+
 }
 
 

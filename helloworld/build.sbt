@@ -25,7 +25,7 @@ libraryDependencies ++= Seq(
   javaWs,
   javaJpa,
   "org.webjars" % "bootstrap" % "3.3.4",
-  "org.mindrot" % "jbcrypt" % "0.3m",
+  "org.mindrot" % "jbcrypt" % "0.4",
   "org.hibernate" % "hibernate-entitymanager" % "5.1.0.Final",
   "com.typesafe.play" %% "play-json" % "2.6.10",
   "mysql" % "mysql-connector-java" % "5.1.21",

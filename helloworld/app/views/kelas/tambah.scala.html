@@ -1,7 +1,7 @@
 @(formKelas: Form[Kelas])
 <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/stylesheets/bootstrap.css")">
 @import helper._
-    @dosen.menu.render()
+@index.render()
 @helper.form(CSRF(routes.KelasController.tambah())){
     @helper.inputText(formKelas("nama_kelas"), '_label -> "Nama Kelas")
     <input type="submit" value="Tambah Kelas" />

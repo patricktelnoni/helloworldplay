@@ -3,19 +3,27 @@ package controllers;
 import be.objectify.deadbolt.java.actions.Group;
 import be.objectify.deadbolt.java.actions.Restrict;
 import be.objectify.deadbolt.java.actions.SubjectPresent;
-import models.*;
+import models.Asprak;
+import models.AuthorisedUser;
+import models.SecurityRole;
 import forms.*;
 import play.libs.Json;
 import play.mvc.*;
 import play.data.*;
 import javax.inject.*;
+import java.util.List;
+import java.util.ArrayList;
+import org.mindrot.jbcrypt.*;
 
 
 
-@SubjectPresent
+
 @Restrict({@Group("Laboran")})
 public class HomeController extends Controller{ 
-    @Inject FormFactory formFactory;    
+    @Inject FormFactory formFactory;
+    @Inject Asprak asprak;
+    @Inject AuthorisedUser user;
+    @Inject SecurityRole securityRole;
     
     public Result index() {
          Form<LoginForm> loginForm = formFactory.form(LoginForm.class);
@@ -34,7 +42,7 @@ public class HomeController extends Controller{
         return ok("Hello " + requestData.get("nim") + " " + requestData.get("password"));
 
     }
-
+    @Restrict({@Group("Laboran")})
     public Result daftarAsprak(){
          Form<LoginForm> loginForm = formFactory.form(LoginForm.class);
          Form<Asprak> asprakForm = formFactory.form(Asprak.class);
@@ -56,9 +64,18 @@ public class HomeController extends Controller{
 
     public Result tambahAsprak(){
         DynamicForm  requestData = formFactory.form().bindFromRequest();
-        Asprak asprak       = new Asprak();
+        List<SecurityRole> roleuser = new ArrayList<SecurityRole>();
+        roleuser.add(securityRole.findByName("Asprak"));
+        user.userName               = requestData.get("Nim");
+        String hashed               = BCrypt.hashpw(requestData.get("Password"), BCrypt.gensalt());
+        user.password               = hashed;
+
+        user.setRoles(roleuser);
+        user.save();
+
         asprak.nim_asprak   = Long.parseLong(requestData.get("Nim"));
         asprak.nama         = requestData.get("Nama");
+        asprak.setAuthorisedUser(user);
 
         asprak.save();
         return redirect(routes.HomeController.daftarAsprak());

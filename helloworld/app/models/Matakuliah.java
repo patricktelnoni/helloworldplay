@@ -9,16 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="matakuliah")
-public class MataKuliah extends Model {
+public class Matakuliah extends Model {
     @Id
     @Constraints.Min(10)
     public Long id_matakuliah;
 
     @Constraints.Required
-    public String nama_matakuliah;
+    @Column(columnDefinition = "TEXT")
+    public String kode_matakuliah;
 
-    public String sks;
+    @Constraints.Required
+    public String nama_matakuliah;
 
     @ManyToMany(cascade = CascadeType.ALL)
     public List<Praktikum> praktikum = new ArrayList<>();
@@ -29,5 +30,9 @@ public class MataKuliah extends Model {
     @OneToMany(cascade = CascadeType.ALL)
     public List<Praktikan> praktikan = new ArrayList<>();
 
-    public static final Finder<Long, Kelas> find = new Finder<>(Kelas.class);
+    public static final Finder<Long, Matakuliah> find = new Finder<>(Matakuliah.class);
+
+    public void setId_matakuliah(Long id_matakuliah) {
+        this.id_matakuliah = id_matakuliah;
+    }
 }

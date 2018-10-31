@@ -35,6 +35,11 @@ public class Asprak extends Model {
     public static void delete(Long id) {
 		find.ref(id).delete();
     }
+
+    public void setAuthorisedUser(AuthorisedUser authorisedUser) {
+        this.authorisedUser = authorisedUser;
+    }
+
     public static List<Asprak> all() {
 		//return new ArrayList<Task>();
 	    return find.all();

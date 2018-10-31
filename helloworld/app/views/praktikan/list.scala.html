@@ -1,4 +1,4 @@
-@(list: List[Kelas])
+@(list: List[Praktikan])
 
 @import helper._
 @index.render()
@@ -11,7 +11,9 @@
         <thead>
           <tr>
             <th scope="col">Id Kelas</th>
-            <th scope="col">Nama Kelas</th>
+            <th scope="col">Kode Mata Kuliah</th>
+            <th scope="col">Nama Mata Kuliah</th>
+
 
           </tr>
         </thead>
@@ -20,12 +22,12 @@
        
         @for(data <- list) {
             <tr>
-                <td scope="row">@data.id_kelas</td>
-                <td>@data.nama_kelas</td>
+                <td scope="row">@data.nim_praktikan</td>
+                <td>@data.name</td>
 
                 <td>
-                    <a class="btn btn-warning" href="@routes.KelasController.edit(data.id_kelas)">Edit</a>
-                    |<a class="btn btn-danger" href="@routes.KelasController.hapus(data.id_kelas)">Hapus</a></td>
+                    <a class="btn btn-warning" href="@routes.PraktikanController.edit(data.nim_praktikan)">Edit</a>
+                    |<a class="btn btn-danger" href="@routes.PraktikanController.hapus(data.nim_praktikan)">Hapus</a></td>
                 
                 
             </tr>
@@ -34,7 +36,7 @@
     </table>
 
 
-    <a href="@routes.KelasController.form">Tambah Kelas</a>
+    <a href="@routes.MataKuliahController.form">Tambah Mata Kuliah</a>
     
     
 }

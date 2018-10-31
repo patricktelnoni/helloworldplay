@@ -2,39 +2,40 @@ package controllers;
 
 import be.objectify.deadbolt.java.actions.Group;
 import be.objectify.deadbolt.java.actions.Restrict;
-import models.Modul;
+import models.Praktikan;
+import play.data.FormFactory;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-import play.mvc.With;
+import javax.inject.Inject;
 
-
-@Restrict({@Group("Dosen"), @Group("Asprak") })
-public class ModulController extends Controller {
-
+@Restrict({@Group("Laboran")})
+public class PraktikanController extends Controller {
+    @Inject
+    FormFactory formFactory;
+    @Inject Praktikan praktikan;
     public Result index(){
-        return ok(views.html.modul.listmodul.render(Modul.find.all()));
+        return ok(views.html.praktikan.list.render(praktikan.find.all()));
 
     }
-    public Result formModul(){
+    public Result form(){
         return ok(Json.toJson("Hello"));
 
     }
-    public Result tambahModul(){
+    public Result tambah(){
         return ok(Json.toJson("Hello"));
 
     }
-    public Result editModul(Long id){
+    public Result edit(Long id){
         return ok(Json.toJson("Hello"));
 
     }
-    public Result updateModul(Long id){
+    public Result update(Long id){
         return ok(Json.toJson("Hello"));
 
     }
-    public Result hapusModul(Long id){
+    public Result hapus(Long id){
         return ok(Json.toJson("Hello"));
     }
-
 }
