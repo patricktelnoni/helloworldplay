@@ -15,13 +15,25 @@ public class Praktikan extends Model {
     public Long nim_praktikan;
 
     @Constraints.Required
-    public String name;
-  
-    @ManyToOne
-    Kelas kelas;
+    public String nama_praktikan;
 
+    public String ttl;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="id_kelas")
+    public Kelas kelas;
+  
     @OneToOne
+    @JoinColumn(name="user_id")
     AuthorisedUser authorisedUser;
     
     public static final Finder<Long, Praktikan> find = new Finder<>(Praktikan.class);
+
+    public void setKelas(Kelas kelas) {
+        this.kelas = kelas;
+    }
+
+    public static List<Praktikan> praktikanList(){
+        return find.query().fetch("kelas").findList();
+    }
 }

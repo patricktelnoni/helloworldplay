@@ -1,10 +1,19 @@
-@(formData: Form[Matakuliah])
+@(list:List[Kelas], formData: Form[Praktikan])
 <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/stylesheets/bootstrap.css")">
 @import helper._
 @index.render()
-@helper.form(CSRF(routes.MataKuliahController.tambah())){
-    @helper.inputText(formData("kode_matakuliah"), '_label -> "Kode Mata Kuliah")
-    @helper.inputText(formData("nama_matakuliah"), '_label -> "Nama Mata Kuliah")
+@helper.form(CSRF(routes.PraktikanController.tambah())){
+    @helper.inputText(formData("nim_praktikan"), '_label -> "Nim Praktikan")
+    @helper.inputText(formData("nama_praktikan"), '_label -> "Nama Praktikan")
+    @select(
+        field = formData("kelas"),
+        options = list.map(kelas => kelas.id_kelas.toString -> kelas.nama_kelas),
+        '_default -> "Pilih Kelas",
+        '_label -> "Kelas",
+        '_disabled -> Seq("FooKey", "BazKey")
+
+    )
+
     <input type="submit" value="Tambah Mata Kuliah" />
 }
 

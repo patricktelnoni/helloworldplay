@@ -44,7 +44,6 @@ create table dosen (
 create table kelas (
   id_kelas                      bigint auto_increment not null,
   nama_kelas                    varchar(255),
-  wali                          varchar(255),
   constraint pk_kelas primary key (id_kelas)
 );
 
@@ -90,11 +89,11 @@ create table ploting_asprak (
 
 create table praktikan (
   nim_praktikan                 bigint auto_increment not null,
-  matakuliah_id_matakuliah      bigint not null,
-  name                          varchar(255),
-  kelas_id_kelas                bigint,
-  authorised_user_id            bigint,
-  constraint uq_praktikan_authorised_user_id unique (authorised_user_id),
+  nama_praktikan                varchar(255),
+  ttl                           varchar(255),
+  id_kelas                      bigint,
+  user_id                       bigint,
+  constraint uq_praktikan_user_id unique (user_id),
   constraint pk_praktikan primary key (nim_praktikan)
 );
 
@@ -167,13 +166,10 @@ create index ix_ploting_asprak_kelas_id_kelas on ploting_asprak (kelas_id_kelas)
 alter table ploting_asprak add constraint fk_ploting_asprak_matakuliah_id_matakuliah foreign key (matakuliah_id_matakuliah) references matakuliah (id_matakuliah) on delete restrict on update restrict;
 create index ix_ploting_asprak_matakuliah_id_matakuliah on ploting_asprak (matakuliah_id_matakuliah);
 
-alter table praktikan add constraint fk_praktikan_matakuliah_id_matakuliah foreign key (matakuliah_id_matakuliah) references matakuliah (id_matakuliah) on delete restrict on update restrict;
-create index ix_praktikan_matakuliah_id_matakuliah on praktikan (matakuliah_id_matakuliah);
+alter table praktikan add constraint fk_praktikan_id_kelas foreign key (id_kelas) references kelas (id_kelas) on delete restrict on update restrict;
+create index ix_praktikan_id_kelas on praktikan (id_kelas);
 
-alter table praktikan add constraint fk_praktikan_kelas_id_kelas foreign key (kelas_id_kelas) references kelas (id_kelas) on delete restrict on update restrict;
-create index ix_praktikan_kelas_id_kelas on praktikan (kelas_id_kelas);
-
-alter table praktikan add constraint fk_praktikan_authorised_user_id foreign key (authorised_user_id) references user (id) on delete restrict on update restrict;
+alter table praktikan add constraint fk_praktikan_user_id foreign key (user_id) references user (id) on delete restrict on update restrict;
 
 alter table praktikum add constraint fk_praktikum_ploting_asprak_id_plotting foreign key (ploting_asprak_id_plotting) references ploting_asprak (id_plotting) on delete restrict on update restrict;
 create index ix_praktikum_ploting_asprak_id_plotting on praktikum (ploting_asprak_id_plotting);
@@ -223,13 +219,10 @@ drop index ix_ploting_asprak_kelas_id_kelas on ploting_asprak;
 alter table ploting_asprak drop foreign key fk_ploting_asprak_matakuliah_id_matakuliah;
 drop index ix_ploting_asprak_matakuliah_id_matakuliah on ploting_asprak;
 
-alter table praktikan drop foreign key fk_praktikan_matakuliah_id_matakuliah;
-drop index ix_praktikan_matakuliah_id_matakuliah on praktikan;
+alter table praktikan drop foreign key fk_praktikan_id_kelas;
+drop index ix_praktikan_id_kelas on praktikan;
 
-alter table praktikan drop foreign key fk_praktikan_kelas_id_kelas;
-drop index ix_praktikan_kelas_id_kelas on praktikan;
-
-alter table praktikan drop foreign key fk_praktikan_authorised_user_id;
+alter table praktikan drop foreign key fk_praktikan_user_id;
 
 alter table praktikum drop foreign key fk_praktikum_ploting_asprak_id_plotting;
 drop index ix_praktikum_ploting_asprak_id_plotting on praktikum;

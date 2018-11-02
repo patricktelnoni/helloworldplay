@@ -1,27 +1,37 @@
 
-@(id:Long, filledForm: Form[Matakuliah])
+@(id:Long, list:List[Kelas], filledForm: Form[Praktikan])
 
 <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/css/bootstrap.css")">
 @import helper._
 @index.render()
 
 
-@helper.form(CSRF(routes.MataKuliahController.update(id)),
+@helper.form(CSRF(routes.PraktikanController.update(id)),
     args = 'class -> "text-left col-sm-4", 'style -> "margin-left:10%;"){
     <div class="form-group">
-        @helper.inputText(filledForm("kode_matakuliah"),
-                            '_label -> "Kode Mata Kuliah",
-                            'size -> 30,
-                            'class -> "form-control")
-    </div>
-    <div class="form-group">
-        @helper.inputText(filledForm("nama_matakuliah"),
-                            '_label -> "Nama Mata Kuliah",
+        @helper.inputText(filledForm("nim_praktikan"),
+                            '_label -> "Nim Praktikan",
                             'size -> 30,
                             'class -> "form-control")
     </div>
 
-    <button type="submit" class="btn btn-primary">Update Mata Kuliah</button>
+    <div class="form-group">
+        @helper.inputText(filledForm("nama_praktikan"),
+                            '_label -> "Nama Praktikan",
+                            'size -> 30,
+                            'class -> "form-control")
+    </div>
+    <div class="form-group">
+        @select(
+            field       = filledForm("kelas.id_kelas"),
+            options     = list.map(kelas => kelas.id_kelas.toString -> kelas.nama_kelas),
+            '_default   -> "Pilih Kelas",
+            '_label     -> "Kelas",
+            '_name      -> "kelas"
+        )
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Praktikan</button>
 
 
 }

@@ -27,8 +27,6 @@ public class Matakuliah extends Model {
     @OneToMany(cascade = CascadeType.ALL)
     public List<PlotingAsprak> plotAsprak = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    public List<Praktikan> praktikan = new ArrayList<>();
 
     public static final Finder<Long, Matakuliah> find = new Finder<>(Matakuliah.class);
 

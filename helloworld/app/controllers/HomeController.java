@@ -42,7 +42,7 @@ public class HomeController extends Controller{
         return ok("Hello " + requestData.get("nim") + " " + requestData.get("password"));
 
     }
-    @Restrict({@Group("Laboran")})
+
     public Result daftarAsprak(){
          Form<LoginForm> loginForm = formFactory.form(LoginForm.class);
          Form<Asprak> asprakForm = formFactory.form(Asprak.class);

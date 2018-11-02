@@ -17,16 +17,22 @@ public class Kelas extends Model {
     @Constraints.Required
     public String nama_kelas;
 
-    public String wali;
-  
     @OneToMany(cascade = CascadeType.ALL)
     public List<Praktikum> praktikum = new ArrayList<>();
     
     @OneToMany(cascade = CascadeType.ALL)
     public List<PlotingAsprak> plotAsprak = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="kelas", cascade = CascadeType.ALL)
     public List<Praktikan> praktikan = new ArrayList<>();
+
+    public void setPraktikan(List<Praktikan> praktikan) {
+        this.praktikan = praktikan;
+    }
+
+    public List<Praktikan> getPraktikan() {
+        return praktikan;
+    }
 
     public static final Finder<Long, Kelas> find = new Finder<>(Kelas.class);
 }

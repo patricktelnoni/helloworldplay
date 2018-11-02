@@ -25,7 +25,6 @@ public class FreeController extends Controller{
     }
     public Result index() {
         Form<LoginForm> loginForm = formFactory.form(LoginForm.class);
-        //Object user = ctx().args.get("user");
         String akses = session("akses");
         if(akses == null)
             return ok(views.html.user.render(loginForm));
