@@ -1,0 +1,18 @@
+@(list:List[Kelas], formData: Form[Praktikan])
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/stylesheets/bootstrap.css")">
+@import helper._
+@index.render()
+@helper.form(CSRF(routes.PraktikanController.upload()),
+            'enctype -> "multipart/form-data"){
+    @select(
+        field = formData("kelas"),
+        options = list.map(kelas => kelas.id_kelas.toString -> kelas.nama_kelas),
+        '_default -> "Pilih Kelas",
+        '_label -> "Kelas"
+    )
+    @helper.inputFile(formData("praktikan"), '_label -> "File Praktikan")
+
+    <input type="submit" value="Tambah Mata Kuliah" />
+}
+
+

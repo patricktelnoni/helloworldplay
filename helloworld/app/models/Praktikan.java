@@ -11,7 +11,10 @@ import play.data.validation.*;
 public class Praktikan extends Model {
 
     @Id
-    @Constraints.Min(10)
+    public Long id_praktikan;
+
+    @Constraints.Required
+    @Column(columnDefinition = "TEXT")
     public Long nim_praktikan;
 
     @Constraints.Required
@@ -31,6 +34,14 @@ public class Praktikan extends Model {
 
     public void setKelas(Kelas kelas) {
         this.kelas = kelas;
+    }
+
+    public void setNim_praktikan(Long nim_praktikan) {
+        this.nim_praktikan = nim_praktikan;
+    }
+
+    public Long getNim_praktikan() {
+        return nim_praktikan;
     }
 
     public static List<Praktikan> praktikanList(){

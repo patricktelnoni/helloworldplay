@@ -20,7 +20,6 @@ libraryDependencies ++= Seq(
   filters,
   evolutions,
   javaJdbc,
-  ehcache,
   evolutions,
   javaWs,
   javaJpa,
@@ -29,6 +28,8 @@ libraryDependencies ++= Seq(
   "org.hibernate" % "hibernate-entitymanager" % "5.1.0.Final",
   "com.typesafe.play" %% "play-json" % "2.6.10",
   "mysql" % "mysql-connector-java" % "5.1.21",
-  "io.jsonwebtoken" % "jjwt" % "0.9.0",
-  "be.objectify" %% "deadbolt-java" % "2.6.0"
+  "be.objectify" %% "deadbolt-java" % "2.6.0",
+  "org.apache.poi" % "poi" % "3.8",
+  "org.apache.poi" % "poi-ooxml" % "3.9"
+
 )

@@ -4,9 +4,9 @@
 @index.render()
 <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/javascripts/jquery.js")">
 
-@main("Daftar Kelas") {
+@main("Daftar Praktikan") {
     
-    <h1>@list.size() Kelas</h1>
+    <h1>@list.size() Praktikan</h1>
     <table class="table table-striped table-bordered table-responsive">
         <thead>
           <tr>
@@ -26,8 +26,8 @@
                 <td>@data.nama_praktikan</td>
 
                 <td>
-                    <a class="btn btn-warning" href="@routes.PraktikanController.edit(data.nim_praktikan)">Edit</a>
-                    |<a class="btn btn-danger" href="@routes.PraktikanController.hapus(data.nim_praktikan)">Hapus</a></td>
+                    <a class="btn btn-warning" href="@routes.PraktikanController.edit(data.id_praktikan)">Edit</a>
+                    |<a class="btn btn-danger" href="@routes.PraktikanController.hapus(data.id_praktikan)">Hapus</a></td>
                 
                 
             </tr>
@@ -37,6 +37,7 @@
 
 
     <a href="@routes.PraktikanController.form()">Tambah Praktikan</a>
-    
+    <a href="@routes.PraktikanController.formUpload()">Upload Praktikan</a>
+
     
 }

@@ -50,6 +50,8 @@ GET     /edit_praktikan/:id         controllers.PraktikanController.edit(id: Lon
 POST    /update_praktikan/:id       controllers.PraktikanController.update(id: Long)
 GET     /hapus_praktikan/:id        controllers.PraktikanController.hapus(id: Long)
 POST    /tambah_praktikan           controllers.PraktikanController.tambah
+POST    /do_upload_praktikan        controllers.PraktikanController.upload
+GET     /upload_praktikan           controllers.PraktikanController.formUpload
 
 POST    /do_login                   controllers.FreeController.doLogin
 POST    /do_change_password         controllers.UserController.doChangePassword

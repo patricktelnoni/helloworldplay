@@ -88,13 +88,14 @@ create table ploting_asprak (
 );
 
 create table praktikan (
-  nim_praktikan                 bigint auto_increment not null,
+  id_praktikan                  bigint auto_increment not null,
+  nim_praktikan                 TEXT,
   nama_praktikan                varchar(255),
   ttl                           varchar(255),
   id_kelas                      bigint,
   user_id                       bigint,
   constraint uq_praktikan_user_id unique (user_id),
-  constraint pk_praktikan primary key (nim_praktikan)
+  constraint pk_praktikan primary key (id_praktikan)
 );
 
 create table praktikum (
