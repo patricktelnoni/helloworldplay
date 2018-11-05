@@ -4,6 +4,7 @@ import java.util.*;
 import javax.persistence.*;
 
 import io.ebean.*;
+import io.ebean.annotation.JsonIgnore;
 import play.data.format.*;
 import play.data.validation.*;
 
@@ -11,6 +12,7 @@ import play.data.validation.*;
 public class Praktikan extends Model {
 
     @Id
+    @JsonIgnore
     public Long id_praktikan;
 
     @Constraints.Required
@@ -32,6 +34,7 @@ public class Praktikan extends Model {
     
     public static final Finder<Long, Praktikan> find = new Finder<>(Praktikan.class);
 
+
     public void setKelas(Kelas kelas) {
         this.kelas = kelas;
     }
@@ -40,11 +43,29 @@ public class Praktikan extends Model {
         this.nim_praktikan = nim_praktikan;
     }
 
+
     public Long getNim_praktikan() {
         return nim_praktikan;
     }
 
-    public static List<Praktikan> praktikanList(){
-        return find.query().fetch("kelas").findList();
+    public static PagedList<Praktikan> praktikanList(Integer page, String filter){
+        return find.query().fetch("kelas").
+                where().
+                like("nim_praktikan", ""+filter+"%").or().
+                like("nama_praktikan", ""+filter+"%").or().
+                like("kelas", ""+filter+"%").
+
+                setFirstRow(page *10).
+                setMaxRows(10).
+                findPagedList();
+    }
+
+    public static List<Praktikan> praktikanListJson(String filter){
+        return find.query().fetch("kelas").
+                where().or().
+                like("nim_praktikan", "%"+filter+"%").or().
+                like("nama_praktikan", "%"+filter+"%").or().
+                like("kelas", "%"+filter+"%").
+                findList();
     }
 }

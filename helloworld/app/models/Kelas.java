@@ -3,6 +3,8 @@ package models;
 import java.util.*;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
@@ -24,6 +26,7 @@ public class Kelas extends Model {
     public List<PlotingAsprak> plotAsprak = new ArrayList<>();
 
     @OneToMany(mappedBy="kelas", cascade = CascadeType.ALL)
+    @JsonBackReference
     public List<Praktikan> praktikan = new ArrayList<>();
 
     public void setPraktikan(List<Praktikan> praktikan) {

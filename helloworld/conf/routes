@@ -44,7 +44,8 @@ POST    /tambah_matakuliah          controllers.MataKuliahController.tambah
 GET     /list_soal                  controllers.SoalController.index
 
 #Praktikan
-GET     /list_praktikan             controllers.PraktikanController.index
+GET     /list_praktikan             controllers.PraktikanController.index(page:Integer, filter:String)
+GET     /ajax_list_praktikan        controllers.PraktikanController.cariList(filter:String)
 GET     /form_praktikan             controllers.PraktikanController.form
 GET     /edit_praktikan/:id         controllers.PraktikanController.edit(id: Long)
 POST    /update_praktikan/:id       controllers.PraktikanController.update(id: Long)
