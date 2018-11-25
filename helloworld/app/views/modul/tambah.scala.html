@@ -1,0 +1,14 @@
+@(kodematakuliah:String, modulForm: Form[Modul])
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/stylesheets/bootstrap.css")">
+@import helper._
+@index.render()
+@helper.form(CSRF(routes.ModulController.tambahModul(kodematakuliah))){
+    @helper.inputText(modulForm("Nama"), 'id -> "email", 'size -> 30)
+    @helper.inputText(modulForm("TP"), 'id -> "email", 'size -> 30)
+    @helper.inputText(modulForm("Jurnal"), 'id -> "email", 'size -> 30)
+    @helper.inputText(modulForm("TA"), 'id -> "email", 'size -> 30)
+
+    <input type="submit" value="Tambah Modul" />
+}
+
+

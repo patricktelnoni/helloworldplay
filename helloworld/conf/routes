@@ -14,18 +14,22 @@ POST    /hapus_asprak/:id           controllers.HomeController.hapusAsprak(id: L
 POST    /tambah_asprak              controllers.HomeController.tambahAsprak
 #Dosen
 GET     /list_dosen                 controllers.DosenController.daftarDosen
+GET     /set_dosen_kelas            controllers.DosenController.setDosenKelasForm
+GET     /list_mata_kuliah_dosen     controllers.DosenController.listMataKuliahDosen
 GET     /form_dosen                 controllers.DosenController.formDosen
 GET     /edit_dosen/:id             controllers.DosenController.editDosen(id: Long)
 POST    /update_dosen/:id           controllers.DosenController.updateDosen(id: Long)
 POST    /hapus_dosen/:id            controllers.DosenController.hapusDosen(id: Long)
 POST    /tambah_dosen               controllers.DosenController.tambahDosen
+POST    /set_dosen_kelas            controllers.DosenController.setDosenKelas
 #Modul
 GET     /list_modul                 controllers.ModulController.index
-GET     /form_modul                 controllers.ModulController.formModul
+GET     /list_modul_matakuliah      controllers.ModulController.getModulByMataKuliah(kodematakuliah:String)
+GET     /form_modul                 controllers.ModulController.formModul(kodematakuliah:String)
 GET     /edit_modul/:id             controllers.ModulController.editModul(id: Long)
 POST    /update_modul/:id           controllers.ModulController.updateModul(id: Long)
 POST    /hapus_modul/:id            controllers.ModulController.hapusModul(id: Long)
-POST    /tambah_modul               controllers.ModulController.tambahModul
+POST    /tambah_modul               controllers.ModulController.tambahModul(kodematakuliah:String)
 #Kelas
 GET     /list_kelas                 controllers.KelasController.index
 GET     /form_kelas                 controllers.KelasController.form

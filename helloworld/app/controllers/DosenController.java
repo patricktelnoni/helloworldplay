@@ -3,25 +3,33 @@ package controllers;
 import be.objectify.deadbolt.java.actions.Group;
 import be.objectify.deadbolt.java.actions.Restrict;
 
-import models.AuthorisedUser;
-import models.SecurityRole;
+import io.ebean.Ebean;
+import io.ebean.SqlUpdate;
+import models.*;
+import play.Logger;
 import play.mvc.*;
 import play.data.*;
-import models.Dosen;
+
 import javax.inject.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.mindrot.jbcrypt.*;
 
 
 
 
-@Restrict({@Group("Laboran")})
+@Restrict({@Group("Laboran"), @Group("Dosen")})
 public class DosenController extends Controller{
     @Inject FormFactory formFactory;
     @Inject Dosen dosen;
+    @Inject
+    Matakuliah mataKuliah;
     @Inject AuthorisedUser user;
     @Inject SecurityRole securityRole;
+    @Inject
+    PlottingDosenKuliah plottingDosenKuliah;
+
 
     public static Result index() {
         return Results.TODO;
@@ -39,6 +47,34 @@ public class DosenController extends Controller{
     public Result formDosen(){
         Form<Dosen> DosenForm = formFactory.form(Dosen.class);
         return ok(views.html.dosen.tambahdosen.render(DosenForm));
+
+    }
+    public Result setDosenKelasForm(){
+        Form<Dosen> DosenForm = formFactory.form(Dosen.class);
+        return ok(views.html.dosen.setdosenkelas.render(DosenForm, dosen.find.all(), mataKuliah.find.all()));
+
+    }
+
+    public Result listMataKuliahDosen(){
+        String nim = session("email");
+        return ok(
+                views.html.dosen.listmatakuliah.render(plottingDosenKuliah.getListMataKuliahDosen(nim))
+        );
+    }
+
+    public Result setDosenKelas(){
+        DynamicForm  requestData    = formFactory.form().bindFromRequest();
+        List<String> daftardosen = Arrays.asList(requestData.get("tagdosen").split(","));
+        for(String dos: daftardosen ){
+            SqlUpdate insert = Ebean.createSqlUpdate("" +
+                    "INSERT INTO `matakuliah_dosen`(`matakuliah_id_matakuliah`, `dosen_nim_dosen`) " +
+                    "VALUES (:nim, :mk)");
+            insert.setParameter("nim", dos);
+            insert.setParameter("mk", requestData.get("matakuliah"));
+            insert.execute();
+        }
+        return ok("Dapet");
+
 
     }
 
