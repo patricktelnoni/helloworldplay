@@ -10,7 +10,7 @@ import play.data.validation.*;
 @Entity
 public class Asprak extends Model {
     @Id
-    @Constraints.Min(10)
+    @Constraints.Min(5)
     public Long nim_asprak;
 
     @Constraints.Required
@@ -23,9 +23,6 @@ public class Asprak extends Model {
     @OneToOne
     @JoinColumn(name="user_id")
     AuthorisedUser authorisedUser;
-
-    @Formats.DateTime(pattern="dd/MM/yyyy")
-    public Date dueDate = new Date();
 
     @OneToMany(cascade = CascadeType.ALL)
     public List<PlotingAsprak> plotingAsprak = new ArrayList<>();        

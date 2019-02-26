@@ -7,11 +7,12 @@ GET     /                           controllers.FreeController.index
 #GET     /home                       controllers.FreeController.dashboard
 #Asprak
 GET     /list_asprak                controllers.HomeController.daftarAsprak
+GET     /api/list_asprak/            controllers.HomeController.jsonListAsprak
 GET     /form_asprak                controllers.HomeController.formAsprak
-GET     /edit_asprak/:id            controllers.HomeController.editAsprak(id: Long)
-POST    /update_asprak/:id          controllers.HomeController.updateAsprak(id: Long)
-POST    /hapus_asprak/:id           controllers.HomeController.hapusAsprak(id: Long)
-POST    /tambah_asprak              controllers.HomeController.tambahAsprak
+GET     /api/edit_asprak/:id            controllers.HomeController.editAsprak(id: Long)
+PUT    /api/update_asprak/:id          controllers.HomeController.updateAsprak(id: Long)
+DELETE  /api/hapus_asprak/:id           controllers.HomeController.hapusAsprak(id: Long)
+POST    /api/tambah_asprak              controllers.HomeController.tambahAsprak
 #Dosen
 GET     /list_dosen                 controllers.DosenController.daftarDosen
 GET     /set_dosen_kelas            controllers.DosenController.setDosenKelasForm
@@ -26,8 +27,8 @@ POST    /set_dosen_kelas            controllers.DosenController.setDosenKelas
 GET     /list_modul                 controllers.ModulController.index
 GET     /list_modul_matakuliah      controllers.ModulController.getModulByMataKuliah(kodematakuliah:String)
 GET     /form_modul                 controllers.ModulController.formModul(kodematakuliah:String)
-GET     /edit_modul/:id             controllers.ModulController.editModul(id: Long)
-POST    /update_modul/:id           controllers.ModulController.updateModul(id: Long)
+GET     /edit_modul/:id             controllers.ModulController.editModul(id: Long, matakuliah:String)
+POST    /update_modul/:id           controllers.ModulController.updateModul(id: Long, matakuliah:String)
 POST    /hapus_modul/:id            controllers.ModulController.hapusModul(id: Long)
 POST    /tambah_modul               controllers.ModulController.tambahModul(kodematakuliah:String)
 #Kelas

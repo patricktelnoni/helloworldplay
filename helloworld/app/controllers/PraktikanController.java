@@ -5,10 +5,13 @@ import be.objectify.deadbolt.java.actions.Restrict;
 import com.fasterxml.jackson.databind.JsonNode;
 import io.ebean.Ebean;
 import io.ebean.SqlUpdate;
+import models.AuthorisedUser;
 import models.Kelas;
 import models.Praktikan;
 
+import models.SecurityRole;
 import org.apache.poi.ss.usermodel.*;
+import org.mindrot.jbcrypt.BCrypt;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.data.FormFactory;
@@ -19,11 +22,16 @@ import play.mvc.Result;
 import javax.inject.Inject;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 @Restrict({@Group("Laboran")})
 public class PraktikanController extends Controller {
     @Inject FormFactory formFactory;
     @Inject Kelas kelas;
+    @Inject SecurityRole securityRole;
+    @Inject
+    AuthorisedUser user;
     @Inject Praktikan praktikan;
     public Result index(Integer page, String filter){
         return ok(views.html.praktikan.list.render(praktikan.praktikanList(page, filter),
@@ -60,7 +68,7 @@ public class PraktikanController extends Controller {
                 for (Row row : sheet) {
                     if(row.getRowNum() > 0 ) {
                         SqlUpdate insert = Ebean.createSqlUpdate("" +
-                        "INSERT INTO praktikan (`nim_praktikan`, `nama_praktikan`, `id_kelas`) " +
+                        "INSERT INTO praktikan ('nim_praktikan', 'nama_praktikan', 'id_kelas') " +
                         "VALUES (:nim, :nama, :kelas)");
                         insert.setParameter("nim", row.getCell(1).toString());
                         insert.setParameter("nama", row.getCell(2).toString());
@@ -99,13 +107,21 @@ public class PraktikanController extends Controller {
 //        praktikan.nama_praktikan    = requestData.get("nama_praktikan");
 //        praktikan.setKelas(Kelas.find.ref(Long.parseLong(requestData.get("kelas"))));
 //        praktikan.save();
+        List<SecurityRole> roleuser = new ArrayList<SecurityRole>();
+        roleuser.add(securityRole.findByName("Dosen"));
+        user.userName               = requestData.get("nim_praktikan");
+        String hashed               = BCrypt.hashpw(requestData.get("Password"), BCrypt.gensalt());
+        user.password               = hashed;
+
+        user.setRoles(roleuser);
+        user.save();
         String nim = requestData.get("nim_praktikan");
         String nama = requestData.get("nama_praktikan");
         String kelas = requestData.get("kelas");
 
 
         SqlUpdate insert = Ebean.createSqlUpdate("" +
-                "   INSERT INTO praktikan (`nim_praktikan`, `nama_praktikan`, `id_kelas`) " +
+                "   INSERT INTO praktikan ('nim_praktikan', 'nama_praktikan', 'id_kelas') " +
                 "VALUES (:nim, :nama, :kelas)");
         insert.setParameter("nim", nim);
         insert.setParameter("nama", nama);

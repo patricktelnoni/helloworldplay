@@ -3,10 +3,14 @@
 @import helper._
 @index.render()
 @helper.form(CSRF(routes.ModulController.tambahModul(kodematakuliah))){
-    @helper.inputText(modulForm("Nama"), 'id -> "email", 'size -> 30)
-    @helper.inputText(modulForm("TP"), 'id -> "email", 'size -> 30)
-    @helper.inputText(modulForm("Jurnal"), 'id -> "email", 'size -> 30)
-    @helper.inputText(modulForm("TA"), 'id -> "email", 'size -> 30)
+    @helper.inputText(modulForm("Nama"), 'id -> "nama", 'size -> 30)
+    @helper.inputText(modulForm("TP"), 'id -> "tp", 'size -> 30)
+    @helper.inputText(modulForm("Jurnal"), 'id -> "jurnal", 'size -> 30)
+    @helper.inputText(modulForm("durasi_jurnal"), 'label-> "Lama pengerjaan jurnal", 'id -> "durasi_jurnal", 'size -> 30)
+    @helper.inputText(modulForm("TA"), 'id -> "ta", 'size -> 30)
+    @helper.inputDate(modulForm("deadline_ta"), 'label-> "Deadline Tugas Akhir Modul", 'id -> "deadline_ta", 'size -> 30)
+
+
 
     <input type="submit" value="Tambah Modul" />
 }

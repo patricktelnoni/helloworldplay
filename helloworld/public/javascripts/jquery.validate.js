@@ -72,8 +72,8 @@ $.extend( $.fn, {
 
 					// Insert a hidden input as a replacement for the missing submit button
 					// The hidden input is inserted in two cases:
-					//   - A user defined a `submitHandler`
-					//   - There was a pending request due to `remote` method and `stopRequest()`
+					//   - A user defined a 'submitHandler'
+					//   - There was a pending request due to 'remote' method and 'stopRequest()'
 					//     was called to submit the form in case it's valid
 					if ( validator.submitButton && ( validator.settings.submitHandler || validator.formSubmitted ) ) {
 						hidden = $( "<input type='hidden'/>" )
@@ -759,7 +759,7 @@ $.extend( $.validator, {
 
 			// If normalizer is defined, then call it to retreive the changed value instead
 			// of using the real one.
-			// Note that `this` in the normalizer is `element`.
+			// Note that 'this' in the normalizer is 'element'.
 			if ( normalizer ) {
 				val = normalizer.call( element, val );
 
@@ -1029,7 +1029,7 @@ $.extend( $.validator, {
 		// meta-characters that should be escaped in order to be used with JQuery
 		// as a literal part of a name/id or any selector.
 		escapeCssMeta: function( string ) {
-			return string.replace( /([\\!"#$%&'()*+,./:;<=>?@\[\]^`{|}~])/g, "\\$1" );
+			return string.replace( /([\\!"#$%&'()*+,./:;<=>?@\[\]^'{|}~])/g, "\\$1" );
 		},
 
 		idOrName: function( element ) {
@@ -1109,7 +1109,7 @@ $.extend( $.validator, {
 				$( this.currentForm ).submit();
 
 				// Remove the hidden input that was used as a replacement for the
-				// missing submit button. The hidden input is added by `handle()`
+				// missing submit button. The hidden input is added by 'handle()'
 				// to ensure that the value of the used submit button is passed on
 				// for scripted submits triggered by this method
 				if ( this.submitButton ) {
@@ -1381,7 +1381,7 @@ $.extend( $.validator, {
 			// Retrieved 2014-01-14
 			// If you have a problem with this implementation, report a bug against the above spec
 			// Or use custom methods to implement your own email validation
-			return this.optional( element ) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( value );
+			return this.optional( element ) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_'{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( value );
 		},
 
 		// https://jqueryvalidation.org/url-method/

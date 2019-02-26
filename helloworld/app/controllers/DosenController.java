@@ -67,7 +67,7 @@ public class DosenController extends Controller{
         List<String> daftardosen = Arrays.asList(requestData.get("tagdosen").split(","));
         for(String dos: daftardosen ){
             SqlUpdate insert = Ebean.createSqlUpdate("" +
-                    "INSERT INTO `matakuliah_dosen`(`matakuliah_id_matakuliah`, `dosen_nim_dosen`) " +
+                    "INSERT INTO 'matakuliah_dosen'('matakuliah_id_matakuliah', 'dosen_nim_dosen') " +
                     "VALUES (:nim, :mk)");
             insert.setParameter("nim", dos);
             insert.setParameter("mk", requestData.get("matakuliah"));

@@ -9,7 +9,6 @@ create table asprak (
   role                          varchar(255),
   active                        tinyint(1) default 0 not null,
   user_id                       bigint,
-  due_date                      datetime(6),
   constraint uq_asprak_user_id unique (user_id),
   constraint pk_asprak primary key (nim_asprak)
 );
@@ -81,8 +80,9 @@ create table modul (
   nama_modul                    varchar(255),
   tp                            TEXT,
   jurnal                        TEXT,
+  durasi_pengerjaan_jurnal      TEXT,
   tugas_akhir                   TEXT,
-  deadline                      datetime(6),
+  deadline_tugas_akhir          datetime(6),
   matakuliah_id_matakuliah      bigint,
   constraint uq_modul_matakuliah_id_matakuliah unique (matakuliah_id_matakuliah),
   constraint pk_modul primary key (id_modul)

@@ -26,7 +26,7 @@
                 <td>@data.jurnal</td>
                 <td>@data.tugas_akhir</td>
                 <td>
-                    <a class="btn btn-warning" href="@routes.ModulController.editModul(data.id_modul)">Edit</a>
+                    <a class="btn btn-warning" href="@routes.ModulController.editModul(data.id_modul, data.getMatakuliah().getKode_matakuliah())">Edit</a>
                     |<a class="btn btn-warning" href="@routes.ModulController.hapusModul(data.id_modul)">Edit</a></td>
                 
                 

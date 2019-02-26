@@ -3,6 +3,7 @@ package controllers;
 import be.objectify.deadbolt.java.actions.Group;
 import be.objectify.deadbolt.java.actions.Restrict;
 import be.objectify.deadbolt.java.actions.SubjectPresent;
+import com.fasterxml.jackson.databind.JsonNode;
 import models.Asprak;
 import models.AuthorisedUser;
 import models.SecurityRole;
@@ -11,8 +12,11 @@ import play.libs.Json;
 import play.mvc.*;
 import play.data.*;
 import javax.inject.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+
 import org.mindrot.jbcrypt.*;
 
 
@@ -43,11 +47,23 @@ public class HomeController extends Controller{
 
     }
 
+    public Result jsonListAsprak(){
+        ArrayList data = new ArrayList();
+        for (Asprak asprak:Asprak.all()) {
+            HashMap<String, Object> result = new HashMap<String, Object>();
+            result.put("nim", asprak.nim_asprak);
+            result.put("nama", asprak.nama);
+            result.put("role", asprak.role);
+            data.add(result);
+        }
+        return ok(Json.toJson(data));
+
+    }
+
     public Result daftarAsprak(){
-         Form<LoginForm> loginForm = formFactory.form(LoginForm.class);
          Form<Asprak> asprakForm = formFactory.form(Asprak.class);
          return ok(
-             views.html.asprak.listasprak.render(Asprak.all(), asprakForm)
+             views.html.asprak.listasprak.render(asprakForm)
          );
 //        String user = session("email");
 //        Logger.info("Calling action for {}", user);
@@ -61,24 +77,29 @@ public class HomeController extends Controller{
         return ok(views.html.asprak.tambahasprak.render(asprakForm));
 
     }
-
+    @BodyParser.Of(BodyParser.Json.class)
     public Result tambahAsprak(){
-        DynamicForm  requestData = formFactory.form().bindFromRequest();
+
+        JsonNode json       = request().body().asJson();
+        String nama         = json.findPath("nama").textValue();
+        String nim          = json.findPath("nim").textValue();
+        String password     = json.findPath("password").textValue();
         List<SecurityRole> roleuser = new ArrayList<SecurityRole>();
         roleuser.add(securityRole.findByName("Asprak"));
-        user.userName               = requestData.get("Nim");
-        String hashed               = BCrypt.hashpw(requestData.get("Password"), BCrypt.gensalt());
+        user.userName               = nim;
+        String hashed               = BCrypt.hashpw(password, BCrypt.gensalt());
         user.password               = hashed;
 
         user.setRoles(roleuser);
         user.save();
 
-        asprak.nim_asprak   = Long.parseLong(requestData.get("Nim"));
-        asprak.nama         = requestData.get("Nama");
+        asprak.nim_asprak   = Long.parseLong(nim);
+        asprak.nama         = nama;
         asprak.setAuthorisedUser(user);
 
         asprak.save();
-        return redirect(routes.HomeController.daftarAsprak());
+        return ok("Success");
+//        return redirect(routes.HomeController.daftarAsprak());
 
     }
 
@@ -88,22 +109,28 @@ public class HomeController extends Controller{
     }
 
     public Result editAsprak(Long id){
-        Asprak asprak                   = Asprak.find.byId(id);        
-        Form<Asprak> asprakForm         = formFactory.form(Asprak.class);
-        Form<Asprak> filledAsprakForm   = asprakForm.fill(asprak);
-        return ok(
-            views.html.asprak.editasprak.render(id, filledAsprakForm)
-        );
+        Asprak asprak                   = Asprak.find.byId(id);
+        ArrayList data = new ArrayList();
+            HashMap<String, Object> result = new HashMap<String, Object>();
+            result.put("nim", asprak.nim_asprak);
+            result.put("nama", asprak.nama);
+            result.put("role", asprak.role);
+            data.add(result);
+
+        return ok(Json.toJson(result));
     }
 
+    @BodyParser.Of(BodyParser.Json.class)
     public Result updateAsprak(Long id){
-        DynamicForm  requestData = formFactory.form().bindFromRequest();
-        Asprak asprak       = new Asprak();
-        asprak.nim_asprak   = Long.parseLong(requestData.get("Nim_asprak"));
-        asprak.nama         = requestData.get("Nama");
 
+        JsonNode json       = request().body().asJson();
+        String nama         = json.findPath("nama").textValue();
+        Asprak asprak       = new Asprak();
+        asprak.nim_asprak   = id;
+        asprak.nama         = nama;
         asprak.update();
-        return redirect(routes.HomeController.daftarAsprak());
+        return ok("Success");
+
 
     }
 

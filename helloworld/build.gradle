@@ -40,7 +40,7 @@ repositories {
     }
 }
 
-// EXAMPLE: How to add JVM parameters when running `runPlayBinary`.
+// EXAMPLE: How to add JVM parameters when running 'runPlayBinary'.
 // See other configurations for PlayRun here:
 // https://docs.gradle.org/current/dsl/org.gradle.play.tasks.PlayRun.html
 //
@@ -48,7 +48,7 @@ repositories {
 //     forkOptions.jvmArgs = ['-Dplay.http.secret.key=yadayada']
 // }
 
-// EXAMPLE: How to add JVM parameters to the script created by `stage`.
+// EXAMPLE: How to add JVM parameters to the script created by 'stage'.
 // See more details here:
 // https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/application/CreateStartScripts.html
 //

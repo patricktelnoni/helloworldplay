@@ -14,6 +14,9 @@ import play.mvc.Result;
 import play.mvc.With;
 
 import javax.inject.Inject;
+import java.text.DateFormat;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -40,23 +43,40 @@ public class ModulController extends Controller {
     }
     public Result tambahModul(String kodematakuliah){
         DynamicForm requestData    = formFactory.form().bindFromRequest();
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyy");
 
         modul.setNama_modul(requestData.get("Nama"));
         modul.setTp(requestData.get("TP"));
         modul.setJurnal(requestData.get("Jurnal"));
+        modul.setDurasi_pengerjaan_jurnal(requestData.get("durasi_jurnal"));
         modul.setTugas_akhir(requestData.get("TA"));
         modul.setMatakuliah(matakuliah.getByKode(kodematakuliah));
-        modul.setDeadline(new Date());
+        modul.setDeadline_tugas_akhir(dateFormat.parse(requestData.get("deadline_ta"), new ParsePosition(5)));
         modul.save();
         return redirect(routes.ModulController.getModulByMataKuliah(kodematakuliah));
 
     }
-    public Result editModul(Long id){
-        return ok(Json.toJson("Hello"));
+    public Result editModul(Long id, String matakuliah){
+        Form<Modul> ModulForm         = formFactory.form(Modul.class);
+        Form<Modul> filledForm        = ModulForm.fill(modul.find.byId(id));
+        return ok(
+                views.html.modul.edit.render(id, matakuliah, filledForm)
+        );
 
     }
-    public Result updateModul(Long id){
-        return ok(Json.toJson("Hello"));
+    public Result updateModul(Long id, String matakuliah){
+        DynamicForm requestData    = formFactory.form().bindFromRequest();
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyy");
+
+        modul.setNama_modul(requestData.get("nama_modul"));
+        modul.setTp(requestData.get("tp"));
+        modul.setJurnal(requestData.get("jurnal"));
+        modul.setDurasi_pengerjaan_jurnal(requestData.get("durasi_pengerjaan_jurnal"));
+        modul.setTugas_akhir(requestData.get("tugas_akhir"));
+        modul.setId_modul(id);
+//        modul.setDeadline_tugas_akhir(dateFormat.parse(requestData.get("deadline_ta"), new ParsePosition(5)));
+        modul.update();
+        return redirect(routes.ModulController.getModulByMataKuliah(matakuliah));
 
     }
     public Result hapusModul(Long id){

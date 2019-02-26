@@ -22,15 +22,30 @@ public class Modul extends Model {
 
     @Column(columnDefinition = "TEXT")
     public String jurnal;
+
+    @Column(columnDefinition = "TEXT")
+    public String durasi_pengerjaan_jurnal;
     
     @Column(columnDefinition = "TEXT")
     public String tugas_akhir;
 
-    @Formats.DateTime(pattern="dd/MM/yyyy")
-    public Date deadline = new Date();
+    @Formats.DateTime(pattern="yyyy-MM-dd")
+    public Date deadline_tugas_akhir;
 
     @OneToOne
     public Matakuliah matakuliah;
+
+    public Matakuliah getMatakuliah() {
+        return matakuliah;
+    }
+
+    public void setId_modul(Long id_modul) {
+        this.id_modul = id_modul;
+    }
+
+    public void setDeadline_tugas_akhir(Date deadline_tugas_akhir) {
+        this.deadline_tugas_akhir = deadline_tugas_akhir;
+    }
 
     public void setNama_modul(String nama_modul) {
         this.nama_modul = nama_modul;
@@ -52,8 +67,8 @@ public class Modul extends Model {
         this.matakuliah = matakuliah;
     }
 
-    public void setDeadline(Date deadline) {
-        this.deadline = deadline;
+    public void setDurasi_pengerjaan_jurnal(String durasi_pengerjaan_jurnal) {
+        this.durasi_pengerjaan_jurnal = durasi_pengerjaan_jurnal;
     }
 
     public static final Finder<Long, Modul> find = new Finder<>(Modul.class);

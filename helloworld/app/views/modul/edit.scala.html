@@ -1,0 +1,36 @@
+@(id:Long, matakuliah:String, filledForm: Form[Modul])
+
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../../public/css/bootstrap.css")">
+@import helper._
+@index.render()
+
+
+@helper.form(CSRF(routes.ModulController.updateModul(id, matakuliah)),
+    args = 'class -> "text-left col-sm-4", 'style -> "margin-left:10%;"){
+
+
+    <div class="form-group">
+        @helper.inputText(filledForm("nama_modul"), 'id -> "nama", '_label -> "Nama modul", 'size -> 30, 'class -> "form-control")
+    </div>
+    <div class="form-group">
+        @helper.inputText(filledForm("tp"), 'id -> "tp", 'size -> 30,'class -> "form-control")
+    </div>
+    <div class="form-group">
+        @helper.inputText(filledForm("jurnal"), 'id -> "jurnal", 'size -> 30,'class -> "form-control")
+    </div>
+    <div class="form-group">
+        @helper.inputText(filledForm("durasi_pengerjaan_jurnal"), 'label-> "Lama pengerjaan jurnal", 'id -> "durasi_jurnal", 'size -> 30,'class -> "form-control")
+    </div>
+    <div class="form-group">
+        @helper.inputText(filledForm("tugas_akhir"), 'id -> "ta", 'size -> 30,'class -> "form-control")
+    </div>
+    <div class="form-group">
+        @helper.inputDate(filledForm("deadline_tugas_akhir"), 'label-> "Deadline Tugas Akhir Modul", 'id -> "deadline_ta", 'size -> 30,'class -> "form-control")
+    </div>
+ >
+
+
+    <button type="submit" class="btn btn-primary">Update Modul</button>
+
+
+}
